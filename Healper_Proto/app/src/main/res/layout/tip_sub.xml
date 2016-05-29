@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:text="자세교정에 좋은 스트레칭 동영상"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20dp"/>
+    <VideoView
+        android:id="@+id/video"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+</LinearLayout>
