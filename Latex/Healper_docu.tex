@@ -3,7 +3,11 @@
 \else
 \fi
 \usepackage[pdftex]{graphicx}
+%\usepackage{tikz}
 \usepackage{float}
+\usepackage{array}
+\usepackage{tabularx,booktabs}
+
 \usepackage{amsmath} %Import AMS math package
 \graphicspath{{/C:/Users/Jace/Desktop/3학년1학기/소프트웨어공학/Healpers/latex/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
@@ -243,7 +247,7 @@ HC-06 is a serial port module composed in SMD form which is possible to be repla
 
 Arduino receives the input values, which the four pressure sensors perceive, through the breadboard and sends those values to the Android Application via bluetooth communication with the mobile phone. The system flow is shown in Figure 3.2.\\
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \begin{center}
     \includegraphics[scale=0.4]{img_01.png}
     \caption{System Flow} 
@@ -253,7 +257,7 @@ Arduino receives the input values, which the four pressure sensors perceive, thr
 Therefore, we need 4 pressure sensors, Arduino, bluetooth module, bread board, USB cable and jump wire MM. The specific products' cost is shown in Table 3.1.\\
 \begin{center}
 
-\begin{table}
+\begin{table}[H]
 \caption{The Specific Products' Cost }
 \begin{tabular}{|c|c|c|c|}\hline
 
@@ -357,7 +361,7 @@ Entertainment
 
 -  Smartphone game input device\\
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \begin{center}
     \includegraphics[scale=0.33]{img_05.jpg}
     \caption{Footlogger} 
@@ -409,7 +413,7 @@ Manager& Kim & program and managing the budget \\
 \subsection{Modeling for Specifications \\}
 
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \begin{center}
     \includegraphics[scale=0.55]{img_04.png}
     \caption{Basic structure} 
@@ -423,28 +427,20 @@ At the same time, the application will receive the user's whole data from server
 \subsection{Posture Recognition using pressure sensor}
  We made a kind of cushion for measuring pressure force. The dimensions of the chair and cushion are shown in Table 4.1. And we used FSR-406 pressure sensor model to get proper pressure value for recognizing person's changing posture. The dimensions of FSR-406 are shown in Figure 4.2\\
  
- \begin{center}
-
-\begin{table}[H]
+ \begin{table}[h]
+{\renewcommand\arraystretch{1.25}
 \caption{Dimensions of the chair and cushion}
-\begin{tabular}{c c}\hline \hline
-
-Width of the chair & 45cm \\ \hline
-
-Height of the chair & 42cm \\ \hline
-
-Depth of the chair & 47cm \\ \hline
-
-Width of the cushion & 30cm \\ \hline
-
-Height of the cushion & 30cm \\ \hline \hline
-
-
-\end{tabular}
+\begin{tabular}{|c|cc}  \hline\hline
+Width of the chair& \multicolumn{2}{p{5cm}|}{\raggedright 45cm} \\ \hline
+Height of the chair& \multicolumn{2}{p{5cm}|}{\raggedright 42cm} \\ \hline
+Depth of the chair& \multicolumn{2}{p{5cm}|}{\raggedright 47cm} \\ \hline
+Width of the cushion& \multicolumn{2}{p{5cm}|}{\raggedright 30cm} \\ \hline
+Height of the cushion& \multicolumn{2}{p{5cm}|}{\raggedright 30cm} \\ \hline \hline
+\end{tabular}}
 \end{table}
-\end{center}
 
-\begin{figure}[htbp]
+
+\begin{figure}[H]
 \begin{center}
     \includegraphics[scale=0.6]{img_06.png}
     \caption{Dimensions of FSR-406} 
@@ -453,32 +449,25 @@ Height of the cushion & 30cm \\ \hline \hline
 
 The reason why we choose the FSR-406 is the specifications of FSR-406 are suitable to make the posture recognition cushion. This sensor is very thin and hence can be easily bent to fit, so a user can sit down on the seat comfortably. Since the sensor sheet is light and thin, it can be carried anywhere and used in various situations in daily life. And the active area is appropriate to get pressure value when person changes his or her posture. FSR-406 specifications are shown in Table4.2.
 
- \begin{center}
-
-\begin{table}[H]
+ \begin{table}[h]
+{\renewcommand\arraystretch{1.25}
 \caption{FSR-406 specifications}
-\begin{tabular}{c c}\hline \hline
-
-Thickness & 0.018''(0.46mm) \\ \hline
-
-Active area & 38.1mm x 38.1mm \\ \hline
-
-Connector & AMP Female connector \\ \hline
-
-Minimum load & 0.1N \\ \hline
-
-Maximum load & 10N \\ \hline \hline
-
-
-\end{tabular}
+\begin{tabular}{|c|cc}  \hline\hline
+Thickness& \multicolumn{2}{p{6cm}|}{\raggedright 0.018'' (0.46 mm)} \\ \hline
+Active area& \multicolumn{2}{p{6cm}|}{\raggedright 38.1mm $x$ 38.1mm} \\ \hline
+Connector& \multicolumn{2}{p{6cm}|}{\raggedright AMP Female connector} \\ \hline
+Minimum load& \multicolumn{2}{p{6cm}|}{\raggedright 0.1N} \\ \hline
+Maximum load& \multicolumn{2}{p{6cm}|}{\raggedright 10N} \\ \hline \hline
+\end{tabular}}
 \end{table}
-\end{center}
+
+
 
 FSRs are two-wire devices with a resistance that depends on applied force. For specific application needs please contact Interlink Electronics support team. An integration guide is also available. For a simple force-to-voltage conversion, the FSR device is tied to a measuring resistor in a voltage divider configuration. This is shown in Figure 4.3. The output is described by the equation:
 
 
 \begin{displaymath}
-\qquad\mathrm{V}_{out} =\frac{{R}_mV+}{({R}_M+{R}_{FSR})}
+\qquad\mathrm{V}_{out} =\frac{{R}_mV+}{({R}_M+{R}_{FSR})}\\
 \end{displaymath}
 
 In the shown configuration, the output voltage increases with increasing force. If ${R}_{FSR}$ and ${R}_{M}$ are swapped, the output swing will decrease with increasing force. These two output forms are mirror images about the line ${V}_{out}$  = $(V+) / 2$. The measuring resistor, ${R}_{M'}$ is chosen to maximize the desired force sensitivity range and to limit current. Depending on the impedance requirements of the measuring circuit, the voltage divider could be followed by an on-amp. A family of FORCE vs. ${V}_{out}$ curves is shown on the graph above for a standard FSR in a voltage divider configuration with various ${R}_{M}$ resistors. A $(V+)$ of $+5V$ was used for these examples.
@@ -492,28 +481,20 @@ In the shown configuration, the output voltage increases with increasing force. 
 
 To recognize difference of sitting posture, we have to make the cushion with proper number of pressure sensors. So, we arranged five pressure sensors to the five points in the cushion. The five points are 'Left-front', 'Right-front', 'Center', 'Left-back', 'Right-back' and this classification is shown in Table 3. And the pressure values are transmitted to Arduino board through bread board. The pressure sensors' spot position is shown in Figure 4.4.
 
- \begin{center}
-
-\begin{table}[H]
+ \begin{table}[h]
+{\renewcommand\arraystretch{1.25}
 \caption{The classification of pressure sensor's position}
-\begin{tabular}{c c}\hline \hline
-
-(LF) & Left Front \\ \hline
-
-(RF) & Right Front \\ \hline
-
-(C) & Center \\ \hline
-
-(LB) & Left Back \\ \hline
-
-(RB) & Right Back \\ \hline \hline
-
-
-\end{tabular}
+\begin{tabular}{|c|cc}  \hline\hline
+(LF)& \multicolumn{2}{p{7cm}|}{\raggedright Left Front} \\ \hline
+(RF)& \multicolumn{2}{p{7cm}|}{\raggedright Right Front} \\ \hline
+(C)& \multicolumn{2}{p{7cm}|}{\raggedright Center} \\ \hline
+(LB)& \multicolumn{2}{p{7cm}|}{\raggedright Left Back} \\ \hline
+(RB)& \multicolumn{2}{p{7cm}|}{\raggedright Right Back} \\ \hline \hline
+\end{tabular}}
 \end{table}
-\end{center}
 
-\begin{figure}[htbp]
+
+\begin{figure}[H]
 \begin{center}
     \includegraphics[scale=0.5]{img_08.png}
     \caption{Pressure sensors' spot position} 
@@ -524,30 +505,21 @@ To recognize difference of sitting posture, we have to make the cushion with pro
 
 In this part, we describe a way of classifying sitting postures. Posture classification involves three basic issues. One issue is person dependency. Different persons would obviously sit in different ways. Even the same person might sit on different parts of the seating face. One ways to resolve this problem is to normalize pressure distributions by standardizing different postures when workers sit in the chair. The classification of seven postures is shown in Table 4.4.
 
-\begin{center}
-
-\begin{table}[H]
+ \begin{table}[h]
+{\renewcommand\arraystretch{1.25}
 \caption{The classification of seven postures}
-\begin{tabular}{c c}\hline \hline
-
-(N) & Normal \\ \hline
-
-(F) & Leaning Forward \\ \hline
-
-(B) & Leaning Backward \\ \hline
-
-(L) & Leaning Left \\ \hline
-
-(LC) & Left leg crossed \\ \hline \hline
-
-(R) & Leaning Right \\ \hline
-
-(RC) & Right leg crossed \\ \hline \hline
-
-
-\end{tabular}
+\begin{tabular}{|c|cc}  \hline\hline
+(N)& \multicolumn{2}{p{7cm}|}{\raggedright Left Front} \\ \hline
+(F)& \multicolumn{2}{p{7cm}|}{\raggedright Leaning Forward} \\ \hline
+(B)& \multicolumn{2}{p{7cm}|}{\raggedright Leaning Backward} \\ \hline
+(L)& \multicolumn{2}{p{7cm}|}{\raggedright Leaning Left} \\ \hline
+(LC)& \multicolumn{2}{p{7cm}|}{\raggedright Left leg crossed} \\ \hline 
+(R)& \multicolumn{2}{p{7cm}|}{\raggedright Leaning Right} \\ \hline
+(RC)& \multicolumn{2}{p{7cm}|}{\raggedright Right leg crossed} \\ \hline \hline
+\end{tabular}}
 \end{table}
-\end{center}
+
+
 
 Second issue is the time depedency. We have to push alarm to users when they are doing wrong postures. So, it is needed to decide when we do alarm function. We set time standard from 1 minute to 10 minutes. User could select time when user gets push alarms while user keeps wrong posture. 
    And the last issue is weight dependency. The sensor values would increase linearly or non-linearly with an increase in weight. Therefore, it would be effective to divide the sensor values by the total value. And the each user's pressure value is different when user does 'Normal' posture. So, if user registers in our application, the user's initial pressure values are saved in the database and our algorithm uses each user's data to recognize posture. And we offer the function which initializes user's weight in the application. 
@@ -962,16 +934,13 @@ There is a list box in Setting Page. In this list box, there are ten options; fr
  
 c. initiate pressure value method
 
-Setting up a common pressure value is impossible since every users have different pressure values. Therefore, we made it possible that every users configure their own pressures value. When initialization button in Setting Page is clicked, the average pressure value that has input for five seconds is saved in application and also in server. This program judges whether users' current postures are wrong or not comparing with the saved values. \\\\\\
-
-
+Setting up a common pressure value is impossible since every users have different pressure values. Therefore, we made it possible that every users configure their own pressures value. When initialization button in Setting Page is clicked, the average pressure value that has input for five seconds is saved in application and also in server. This program judges whether users' current postures are wrong or not comparing with the saved values. 
 
 
 \section{Use Cases}
-
 \begin{figure}[H]
 \begin{center}
-    \includegraphics[scale=0.5]{img_17.jpg}
+    \includegraphics[scale=0.6]{img_17.jpg}
     \caption{Overall Usecase} 
 \end{center}
 \end{figure}
@@ -988,13 +957,17 @@ The overall usecase is shown in the Figure 20. Our project's plattform is Androi
 To use self-orthotherapy program, user should log-in to our system. But if user fails to do log-in, there are two ways of solving this problem. These are 'Find ID' and 'Find PW'. Log-In Usecase is shown in the Figure 21 and the Use Case's descriptions are written in the table x.  
 
 
-Table x : The description of Log-In Usecase
-Use Case	Description
-Find ID	 There are two ways to solve log-in problem. The first is 'Find ID'. User could find the own ID by writing the name and E-mail compared to the database's data. 
 
 
-
-Find PW	And the second is 'Find PW'. User could find the own password by writing the ID, and name compared to the database's data. It could meet the need of 'Log-In' requirement.
+\begin{table}[h]
+{\renewcommand\arraystretch{1.25}
+\caption{The description of Log-In Usecase}
+\begin{tabular}{|c|l|l|} \hline
+Use Case & \multicolumn{2}{c|}{Description} \\ \hline\hline
+Find ID& \multicolumn{2}{p{6.75cm}|}{\raggedright There are two ways to solve log-in problem. The first is 'Find ID'. User could find the own ID by writing the name and E-mail compared to the database's data.} \\ \hline
+Find PW& \multicolumn{2}{p{6.75cm}|}{\raggedright And the second is 'Find PW'. User could find the own password by writing the ID, and name compared to the database's data. It could meet the need of 'Log-In' requirement.} \\ \hline
+\end{tabular}}
+\end{table}
 
 
 \begin{figure}[H]
@@ -1007,12 +980,17 @@ Find PW	And the second is 'Find PW'. User could find the own password by writing
  
 If user had not registered in our program, user should do sign-up to use the program. There are four componentes to register user's data into the database. It could meet the need of 'Sign-Up' requirement. Sign-Up Usecase is shown in the Figure 22 and the Use Case's descriptions are written in the table x.
 
-Table x : The description of Sign-Up Usecase.
-Use Case	Description
-ID	User should make unique ID to sign-up. It should be made of english and numbers under 10 characters. The special letters can not be used to make ID.And, it is mandatory for you to double-check your ID.
-Password	There is  no limit in the length of the password and the password will be replaced with other letters, such as ****, as soon as you enter your password for the sake of absolute confidentiality.
-Name	User should write own full name(first name + last name). And the english only could be used.
-E-mail	User should write one e-mail address. User could select the portal's address like 'gmail.com' or 'naver.com' or write the address in person. After that the permission e-mail will be sent to the written e-mail address. So, it is not possible to do sign-up unless the user do not check the permission e-mail. 
+\begin{table}[h]
+{\renewcommand\arraystretch{1.25}
+\caption{The description of Sign-Up Usecase}
+\begin{tabular}{|c|l|l|} \hline
+Use Case & \multicolumn{2}{c|}{Description} \\ \hline\hline
+ID& \multicolumn{2}{p{6.75cm}|}{\raggedright User should make unique ID to sign-up. It should be made of english and numbers under 10 characters. The special letters can not be used to make ID.And, it is mandatory for you to double-check your ID.} \\ \hline
+Password & \multicolumn{2}{p{6.75cm}|}{\raggedright There is  no limit in the length of the password and the password will be replaced with other letters, such as ****, as soon as you enter your password for the sake of absolute confidentiality.} \\ \hline
+Name& \multicolumn{2}{p{6.75cm}|}{\raggedright User should write own full name(first name + last name). And the english only could be used.} \\ \hline
+E-mail& \multicolumn{2}{p{6.75cm}|}{\raggedright User should write one e-mail address. User could select the portal's address like 'gmail.com' or 'naver.com' or write the address in person. After that the permission e-mail will be sent to the written e-mail address. So, it is not possible to do sign-up unless the user do not check the permission e-mail.} \\ \hline
+\end{tabular}}
+\end{table} 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -1022,12 +1000,18 @@ E-mail	User should write one e-mail address. User could select the portal's addr
 \end{figure}
  	  
 
-The main function of this program is to correct user’s bad posture when user sits down on the chair. So, setting the user’s own pressure value is mendatory. Because people have different physical size and weight. Initializing pressure value  is the function to meet that requirement. After initializing presuure value, user could get alarm message when they keep bad posture. Posture Correction Usecase is shown in the Figure 23 and the Use Case’s descriptions are written in the table x.
+The main function of this program is to correct user's bad posture when user sits down on the chair. So, setting the user's own pressure value is mendatory. Because people have different physical size and weight. Initializing pressure value  is the function to meet that requirement. After initializing pressure value, user could get alarm message when they keep bad posture. Posture Correction Usecase is shown in the Figure 23 and the Use Case's descriptions are written in the table x.
 
- 	  Table x : The description of Posture Correction Usecase
-Use Case	Description
-Initializing Pressure Value	To get posture correction alarm, initializing pressure value is needed. Because our algorithm needs the fixed pressure value suited to the user. So,  average of 5 times pressure values(when user sit down to the cushion, the pressure values are recognized.)is selected as the initial pressure value of user. 
-Push-Alarm	 If user has wrong posture, program would recognize that status using posture correction algorithm. And the push alarm will be poped up to the user’s mobile phone like “Do not make your leg crossed”.
+\begin{table}[h]
+{\renewcommand\arraystretch{1.25}
+\caption{The description of Posture Correction Usecase}
+\begin{tabular}{|c|l|l|} \hline
+Use Case & \multicolumn{2}{c|}{Description} \\ \hline\hline
+Initializing Pressure Value& \multicolumn{2}{p{4.5cm}|}{\raggedright To get posture correction alarm, initializing pressure value is needed. Because our algorithm needs the fixed pressure value suited to the user. So,  average of 5 times pressure values(when user sit down to the cushion, the pressure values are recognized.)is selected as the initial pressure value of user.} \\ \hline
+Push-Alarm& \multicolumn{2}{p{4.5cm}|}{\raggedright If user has wrong posture, program would recognize that status using posture correction algorithm. And the push alarm will be popped up to the user's mobile phone like ''Do not make your leg crossed''.} \\ \hline
+\end{tabular}}
+\end{table}
+
 
 \begin{figure}[H]
 \begin{center}
@@ -1039,12 +1023,16 @@ Push-Alarm	 If user has wrong posture, program would recognize that status using
 
  The another main function of this program is to offer analysis information using user’s posture data. And there are three sub functions in analysis part ‘Now’, ‘Statistics’and ‘Tips’. Analysis Usecase is shown in the Figure 24 and the Use Case’s descriptions are written in the table x. 
 
-
-	  Table x : The description of Analysis Usecase
-Use Case	Description
-Now	User could see the two type of time in the ‘Now’ part. First is the the time of user’s actual working hour. And the second is the time how much user keeps good posture and bad posture. And user could see the 3D feature reflecting user’s present posture. So, it could help user recognize their present posture visually.
-Statistics	 User could see the three type of analysing graphical data such as ‘Day’, ‘Week’ and ‘Month’. The user’s data is saved in the database and the program analyzes that data and shows the graphical graph using that data. So, user could see the data distribution according to the selected period(User could select period by touching the upper tab).  It meets the ‘Statistics’ and ‘Visualization’ requirements.
-Tips	User could see the some videos about stretching good for posture correction. And some of exercieses which are good for posture correction  are recommended in this page.
+\begin{table}[h]
+{\renewcommand\arraystretch{1.25}
+\caption{The description of Analysis Usecase}
+\begin{tabular}{|c|l|l|} \hline
+Use Case & \multicolumn{2}{c|}{Description} \\ \hline\hline
+Now & \multicolumn{2}{p{6cm}|}{\raggedright User could see the two type of time in the ‘Now’ part. First is the the time of user’s actual working hour. And the second is the time how much user keeps good posture and bad posture. And user could see the 3D feature reflecting user’s present posture. So, it could help user recognize their present posture visually.} \\ \hline
+Statistics & \multicolumn{2}{p{6cm}|}{\raggedright User could see the three type of analysing graphical data such as ‘Day’, ‘Week’ and ‘Month’. The user’s data is saved in the database and the program analyzes that data and shows the graphical graph using that data. So, user could see the data distribution according to the selected period(User could select period by touching the upper tab).  It meets the ‘Statistics’ and ‘Visualization’ requirements.} \\ \hline
+Tips & \multicolumn{2}{p{6cm}|}{\raggedright User could see the some videos about stretching good for posture correction. And some of exercieses which are good for posture correction  are recommended in this page.} \\ \hline
+\end{tabular}}
+\end{table}
 
 \begin{figure}[H]
 \begin{center}
@@ -1056,13 +1044,18 @@ Tips	User could see the some videos about stretching good for posture correction
 
  User could do four functions in the Setting page. Those are ‘On/Off Push’, ‘Setting Push time’, ‘Initializing pressure value’ and ‘Log-Out’. This functions could help user cutomize program’s functions. Setting Usecase is shown in the Figure 24 and the Use Case’s descriptions are written in the table x.
 
+\begin{table}[h]
+{\renewcommand\arraystretch{1.25}
+\caption{The description of Setting Usecase}
+\begin{tabular}{|c|l|l|} \hline
+Use Case & \multicolumn{2}{c|}{Description} \\ \hline\hline
+On/Off Push & \multicolumn{2}{p{5cm}|}{\raggedright User could change the status of push alarm by On/Off. When user has urgent project meetint or needs to keep mobile phone silent, this function would be needed.} \\ \hline
+Setting Push time & \multicolumn{2}{p{5cm}|}{\raggedright User could set the time when user get the push alarm. The time has range from 1 to 10 minutes. For example, if user selects 2 minutes in this page(Default value is 1 minute)user would get push alarm when user keeps bad posture for 2 minutes.  } \\ \hline
+Initializing pressure value & \multicolumn{2}{p{5cm}|}{\raggedright User could intialize pressure value in this page. The reason why user uses this function is that the actual user could be changed. So, when the actual user is changed the program initializes the pressure value making average value getting five times pressure values. } \\ \hline
+Log-Out & \multicolumn{2}{p{5cm}|}{\raggedright User could do Log-Out in this page. This function is required when user do not want to use this program or take out his/her own data to the database. } \\ \hline
+\end{tabular}}
+\end{table}
 
-	          Table x : The description of Setting Usecase
-Use Case	Description
-On/Off Push	User could change the status of push alarm by On/Off. When user has urgent project meetint or needs to keep mobile phone silent, this function would be needed.
-Setting Push time	 User could set the time when user get the push alarm. The time has range from 1 to 10 minutes. For example, if user selects 2 minutes in this page(Default value is 1 minute)user would get push alarm when user keeps bad posture for 2 minutes.  
-Initializing pressure value	User could intialize pressure value in this page. The reason why user uses this function is that the actual user could be changed. So, when the actual user is changed the program initializes the pressure value making average value getting five times pressure values.  
-Log-Out	 User could do Log-Out in this page. This function is required when user do not want to use this program or take out his/her own data to the database.   
 
 
 .\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
