@@ -3,6 +3,7 @@
 \else
 \fi
 \usepackage[pdftex]{graphicx}
+\usepackage{float}
 \usepackage{amsmath} %Import AMS math package
 \graphicspath{{/C:/Users/Jace/Desktop/3학년1학기/소프트웨어공학/Healpers/latex/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
@@ -243,8 +244,32 @@ Arduino receives the input values, which the four pressure sensors perceive, thr
 \end{figure}
 
 Therefore, we need 4 pressure sensors, Arduino, bluetooth module, bread board, USB cable and jump wire MM. The specific products' cost is shown in Table 3.1.\\
+\begin{center}
 
-\emph{Table 3.1}\\
+\begin{table}
+\caption{The Specific Products' Cost }
+\begin{tabular}{|c|c|c|c|}\hline
+
+
+Products & Prices & Quantities & Costs \\ \hline \hline
+
+Pressure Sensor (FSR-406) & 14,000 & 4 & 56,000  \\ \hline 
+
+Arduino Uno (R3) & 7,500 & 1 & 7,500 \\ \hline
+
+Bluetooth Module (HC-06) & 6,000 & 1  & 6,000 \\ \hline
+
+Bread Board & 4,500 & 1 & 4,500 \\\hline
+
+USB Cable & 500 & 1 & 500  \\ \hline
+
+Jump Wire MM& 70 & 50 & 3500  \\ \hline
+
+\multicolumn{3}{|c|}{Total} & \multicolumn{1}{|l|}{78,000} \\ \hline 
+
+\end{tabular}
+\end{table}
+\end{center}
 
 4.	Provide clear information of your development environment. (e.g., version of software, OS version, your computer resources)\\
 
@@ -332,49 +357,45 @@ Entertainment
 \end{center}
 \end{figure}
 
-\subsection{Task distribution\\\\\\}
+\subsection{Task distribution}
 
 \renewcommand{\arrayrulewidth}{1pt}
 
 
-%\begin{table}
-
+\begin{table}[H]
+\caption{task}
 \begin{tabular}{|c|c|l|}\hline
 Role & Name & Task description and etc.\\ \hline \hline
 
-&  &  -- Test the application in \\ 
-
-&  &  various postures. \\
+&  &  -- Test the application in various postures. \\ 
 
 User & Minsoo & -- Require bugs to be fixed.  \\ 
 
-& Choi & -- Demand the all of his data. \\ 
+& Choi & -- Demand the all of data about user. \\ 
 
 &  & -- Require additional functions. \\ \hline
 
-&  &  -- Develop the application using\\ 
+&  &  -- Develop the application using Arduino and\\ 
 
-Software & Taejin & Arduino and pressure sensor. \\ 
+Software & Taejin & pressure sensor. \\ 
 
 Developer & Kim & -- Fix bugs. \\ 
 
-&  & -- Develop additional functions\\ 
+&  & -- Develop additional functions according to\\ 
 
-&  & according to users' needs. \\ \hline
+&  & users' needs. \\ \hline
 
 &  &  -- Monitor the progress of the project. \\ 
 
-Development & Hakjun & -- Make a overall plan about \\ 
+Development & Hakjun & -- Make a overall plan about developing \\ 
 
-Manager& Kim & developing program and managing \\ 
-
-&  & the budget.\\
+Manager& Kim & program and managing the budget \\ 
 
 &  & -- Reflect users'needs \\ \hline
 
-\end{tabular}
+\end{tabular}\\\\\\\\
 
-%\end{table}
+\end{table}
 
 \section{Specifications}
 
@@ -406,7 +427,26 @@ At the same time, the application will receive the user's whole data from server
 
 The reason why we choose the FSR-406 is the specifications of FSR-406 are suitable to make the posture recognition cushion. This sensor is very thin and hence can be easily bent to fit, so a user can sit down on the seat comfortably. Since the sensor sheet is light and thin, it can be carried anywhere and used in various situations in daily life. And the active area is appropriate to get pressure value when person changes his or her posture. FSR-406 specifications are shown in Table4.2.
 
-\emph{Table}
+\begin{center}
+
+\begin{table}
+\caption{Dimensions of the chair and cushion}
+\begin{tabular}{c c}\hline \hline
+
+Width of the chair & 45cm \\ \hline
+
+Height of the chair & 42cm \\ \hline
+
+Depth of the chair & 47cm \\ \hline
+
+Width of the cushion & 30cm \\ \hline
+
+Height of the cushion & 30cm \\ \hline \hline
+
+
+\end{tabular}
+\end{table}
+\end{center}
 
 FSRs are two-wire devices with a resistance that depends on applied force. For specific application needs please contact Interlink Electronics support team. An integration guide is also available. For a simple force-to-voltage conversion, the FSR device is tied to a measuring resistor in a voltage divider configuration. This is shown in Figure 4.3. The output is described by the equation:
 
@@ -450,7 +490,7 @@ Second issue is the time depedency. We have to push alarm to users when they are
 
  --	Log-In Page\\
 
-\begin{figure}[htbp]
+\begin{figure}[h]
 \begin{center}
     \includegraphics[scale=1]{img_10}
     \caption{Log-In Page} 
@@ -461,7 +501,7 @@ Second issue is the time depedency. We have to push alarm to users when they are
 
  -- Sign-Up Page\\
  
-\begin{figure}[htbp]
+\begin{figure}[h]
 \begin{center}
     \includegraphics[scale=1]{img_11}
     \caption{Sign-Up Page} 
@@ -482,7 +522,7 @@ Second issue is the time depedency. We have to push alarm to users when they are
  
  --Now Page
  
-\begin{figure}[htbp]
+\begin{figure}[h]
 \begin{center}
     \includegraphics[scale=1]{img_12}
     \caption{Now Page} 
@@ -499,7 +539,7 @@ In specific, it counts the number of hours of your correct posture and bad postu
 
  --Stat Page
 
-\begin{figure}[htbp]
+\begin{figure}[h]
 \begin{center}
     \includegraphics[scale=1]{img_13}
     \caption{Stat Page} 
