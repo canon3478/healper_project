@@ -202,7 +202,7 @@ Users can measure their current body balance status by taking a photo of their u
 
 -- Windows for android application developing
 
-Our target is office workers who want to correct their sitting posture. For ortho-therapy, it is the most important and efficient to maintain correct posture intentionally. Considering this, developing mobile application is appropriate rather than either web or computer program operated in window OS because time with mobile phone is longer than time using computer. If there is only our posture-correcting cushion, users can notice that they sit in incorrect posture by push alarm at anytime and anywhere, even while watching TV and reading a book at home. And this data is saved in server automatically so they can check the statistics how long they were sitting and how many times they sat incorrectly. Because Android OS is being used much more than IOS, as the below Figure 3.1 is showing, we develop our application in Android application.
+Our target is office workers who want to correct their sitting posture. For ortho-therapy, it is the most important and efficient to maintain correct posture intentionally. Considering this, developing mobile application is appropriate rather than either web or computer program operated in window OS because time with mobile phone is longer than time using computer. If there is only our posture-correcting cushion, users can notice that they sit in incorrect posture by push alarm at anytime and anywhere, even while watching TV and reading a book at home. And this data is saved in server automatically so they can check the statistics how long they were sitting and how many times they sat incorrectly. Because Android OS is being used much more than IOS, as the below Figure 1 is showing, we develop our application in Android application.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -245,7 +245,7 @@ The model 406 FSR is a single-zone Force Sensing Resistor optimized for use in h
 
 HC-06 is a serial port module composed in SMD form which is possible to be replaced easily. It also uses the connection between the bluetooth Master module in either PC or mobile device and embedded system in substitution of the serial port. 
 
-Arduino receives the input values, which the four pressure sensors perceive, through the breadboard and sends those values to the Android Application via bluetooth communication with the mobile phone. The system flow is shown in Figure 3.2.\\
+Arduino receives the input values, which the four pressure sensors perceive, through the breadboard and sends those values to the Android Application via bluetooth communication with the mobile phone. The system flow is shown in Figure 2.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -254,7 +254,7 @@ Arduino receives the input values, which the four pressure sensors perceive, thr
 \end{center}
 \end{figure}
 
-Therefore, we need 4 pressure sensors, Arduino, bluetooth module, bread board, USB cable and jump wire MM. The specific products' cost is shown in Table 3.1.\\
+Therefore, we need 4 pressure sensors, Arduino, bluetooth module, bread board, USB cable and jump wire MM. The specific products' cost is shown in Table 1.\\
 \begin{center}
 
 \begin{table}[H]
@@ -425,7 +425,7 @@ Manager& Kim & program and managing the budget \\
 At the same time, the application will receive the user's whole data from server. Then, the application will display the data by data visualization.\\\\
 
 \subsection{Posture Recognition using pressure sensor}
- We made a kind of cushion for measuring pressure force. The dimensions of the chair and cushion are shown in Table 4.1. And we used FSR-406 pressure sensor model to get proper pressure value for recognizing person's changing posture. The dimensions of FSR-406 are shown in Figure 4.2\\
+ We made a kind of cushion for measuring pressure force. The dimensions of the chair and cushion are shown in Table 3. And we used FSR-406 pressure sensor model to get proper pressure value for recognizing person's changing posture. The dimensions of FSR-406 are shown in Figure 5.\\
  
  \begin{table}[h]
 {\renewcommand\arraystretch{1.25}
@@ -447,14 +447,14 @@ Height of the cushion& \multicolumn{2}{p{5cm}|}{\raggedright 30cm} \\ \hline \hl
 \end{center}
 \end{figure}
 
-The reason why we choose the FSR-406 is the specifications of FSR-406 are suitable to make the posture recognition cushion. This sensor is very thin and hence can be easily bent to fit, so a user can sit down on the seat comfortably. Since the sensor sheet is light and thin, it can be carried anywhere and used in various situations in daily life. And the active area is appropriate to get pressure value when person changes his or her posture. FSR-406 specifications are shown in Table4.2.
+The reason why we choose the FSR-406 is the specifications of FSR-406 are suitable to make the posture recognition cushion. This sensor is very thin and hence can be easily bent to fit, so a user can sit down on the seat comfortably. Since the sensor sheet is light and thin, it can be carried anywhere and used in various situations in daily life. And the active area is appropriate to get pressure value when person changes his or her posture. FSR-406 specifications are shown in Table 4.
 
  \begin{table}[h]
 {\renewcommand\arraystretch{1.25}
 \caption{FSR-406 specifications}
 \begin{tabular}{|c|cc}  \hline\hline
 Thickness& \multicolumn{2}{p{6cm}|}{\raggedright 0.018'' (0.46 mm)} \\ \hline
-Active area& \multicolumn{2}{p{6cm}|}{\raggedright 38.1mm $x$ 38.1mm} \\ \hline
+Active area& \multicolumn{2}{p{6cm}|}{\raggedright 38.1mm * 38.1mm} \\ \hline
 Connector& \multicolumn{2}{p{6cm}|}{\raggedright AMP Female connector} \\ \hline
 Minimum load& \multicolumn{2}{p{6cm}|}{\raggedright 0.1N} \\ \hline
 Maximum load& \multicolumn{2}{p{6cm}|}{\raggedright 10N} \\ \hline \hline
@@ -463,7 +463,7 @@ Maximum load& \multicolumn{2}{p{6cm}|}{\raggedright 10N} \\ \hline \hline
 
 
 
-FSRs are two-wire devices with a resistance that depends on applied force. For specific application needs please contact Interlink Electronics support team. An integration guide is also available. For a simple force-to-voltage conversion, the FSR device is tied to a measuring resistor in a voltage divider configuration. This is shown in Figure 4.3. The output is described by the equation:
+FSRs are two-wire devices with a resistance that depends on applied force. For specific application needs please contact Interlink Electronics support team. An integration guide is also available. For a simple force-to-voltage conversion, the FSR device is tied to a measuring resistor in a voltage divider configuration. The output is described by the equation:
 
 
 \begin{displaymath}
@@ -479,7 +479,7 @@ In the shown configuration, the output voltage increases with increasing force. 
 \end{center}
 \end{figure}
 
-To recognize difference of sitting posture, we have to make the cushion with proper number of pressure sensors. So, we arranged five pressure sensors to the five points in the cushion. The five points are 'Left-front', 'Right-front', 'Center', 'Left-back', 'Right-back' and this classification is shown in Table 3. And the pressure values are transmitted to Arduino board through bread board. The pressure sensors' spot position is shown in Figure 4.4.
+To recognize difference of sitting posture, we have to make the cushion with proper number of pressure sensors. So, we arranged five pressure sensors to the five points in the cushion. The five points are 'Left-front', 'Right-front', 'Center', 'Left-back', 'Right-back' and this classification is shown in Table 5. And the pressure values are transmitted to Arduino board through bread board. The pressure sensors' spot position is shown in Figure 7.
 
  \begin{table}[h]
 {\renewcommand\arraystretch{1.25}
@@ -503,7 +503,7 @@ To recognize difference of sitting posture, we have to make the cushion with pro
 
 \subsection{Posture classification\\}
 
-In this part, we describe a way of classifying sitting postures. Posture classification involves three basic issues. One issue is person dependency. Different persons would obviously sit in different ways. Even the same person might sit on different parts of the seating face. One ways to resolve this problem is to normalize pressure distributions by standardizing different postures when workers sit in the chair. The classification of seven postures is shown in Table 4.4.
+In this part, we describe a way of classifying sitting postures. Posture classification involves three basic issues. One issue is person dependency. Different persons would obviously sit in different ways. Even the same person might sit on different parts of the seating face. One ways to resolve this problem is to normalize pressure distributions by standardizing different postures when workers sit in the chair. The classification of seven postures is shown in Table 6.
 
  \begin{table}[h]
 {\renewcommand\arraystretch{1.25}
@@ -703,7 +703,7 @@ This code is embedded in the Arduino. The pressure sensor accepts the pressure v
 
 In Arduino\\
 
- --	Class componenets:
+ --	Class components:
 
 a. Setup method 
 
@@ -711,7 +711,7 @@ Setup method is used firstly when the arduino is executed. In this program, the 
 
 b. Loop method 
 
-Loop method is used constantly while the arduino is executed. In this program, the functions receiving and sending the pressure value are established in loop method. \\\\
+Loop method is used constantly while the Arduino is executed. In this program, the functions receiving and sending the pressure value are established in loop method. \\\\
 
 2. MainActivity\\
 
@@ -721,7 +721,7 @@ To show main page and before the program is used in earnest, to set fundamental 
 
  --	Functionality:
  
-This program uses ID and password functions to save each user’s individual data. For this, MainActivity provides log-in function that each users can log-in as their ID, sign-up function for users who start to use, find ID/password function for users who have forgotten theirs and bluetooth function for interworking specific cushion. \\
+This program uses ID and password functions to save each user's individual data. For this, MainActivity provides log-in function that each users can log-in as their ID, sign-up function for users who start to use, find ID/password function for users who have forgotten theirs and bluetooth function for interworking specific cushion. \\
 
  -- Location of source code:
  
@@ -735,7 +735,7 @@ MainActivity.java
 
 a. BLTConnection method
 
-Relationship between the pressure sensors and smartphone is necessary because this program receives users’ posture data from the pressure sensor. In onClick method, BLTConnection method performs on/off functions and searching/connecting devices functions of bluetooth. Therefore, BLTConnection method is necessary in the first page, that is to say Log-In Page. 
+Relationship between the pressure sensors and smartphone is necessary because this program receives users' posture data from the pressure sensor. In onClick method, BLTConnection method performs on/off functions and searching/connecting devices functions of bluetooth. Therefore, BLTConnection method is necessary in the first page, that is to say Log-In Page. 
 
 b. OnClickListener
 
@@ -761,7 +761,7 @@ To show Sign-Up Page to users who start to use this program. Users can sign-up i
 
  --	Functionality:
 
-This activity saves new users’ accounts information. In this activity, therefore, ID that is going to be the primary key goes through the duplication check and individual account information are saved in server.\\
+This activity saves new users' accounts information. In this activity, therefore, ID that is going to be the primary key goes through the duplication check and individual account information are saved in server.\\
  
  --	Location of source code:
 
@@ -771,7 +771,7 @@ com/example/lg/healper_proto/
 SignUpActivity.java
  \end{verbatim}
  
- --	Class componenets:
+ --	Class components:
 
 a. OnClickListener
 
@@ -779,7 +779,7 @@ There are three OnClickListner in SignUpActivity.
 
   1) Redundancy\_()Check
 
-  Individual account information reported in this page is going to be saved in server. Each user’s ID is going to be the primary key in server database. Therefore, the duplication check is necessary to check if an entered ID that tries to sign-up is same as other existing users’ ID. There are duplication check button for this. 
+  Individual account information reported in this page is going to be saved in server. Each user's ID is going to be the primary key in server database. Therefore, the duplication check is necessary to check if an entered ID that tries to sign-up is same as other existing users' ID. There are duplication check button for this. 
 
   2) Sign\_()Up
 
@@ -795,11 +795,11 @@ There are three OnClickListner in SignUpActivity.
  
  --	Purpose:
  
-To show tap page and consitute tap view which consist of Now, Stat, Tip, and Setting for customer.\\
+To show tap page and constitute tap view which consist of Now, Stat, Tip, and Setting for customer.\\
  
  --	Functionality:
 
-TapActivity is the body of this program. We build this program to make users be able to transfer freely using ‘tab’ from a tap to another tap among four taps; now status, statistics, tips and setting page. TapActivity is used in this part to make Fragment Activity showing each page as fragment.\\
+TapActivity is the body of this program. We build this program to make users be able to transfer freely using 'tab' from a tap to another tap among four taps; now status, statistics, tips and setting page. TapActivity is used in this part to make Fragment Activity showing each page as fragment.\\
 
  --	Location of source code:
  
@@ -811,7 +811,7 @@ TapActivity.java
  
  --	Class componenets:
 
-a. init method
+a. Init method
 
 Init method in onCreate method, when this page is created, initialize all of taps to interwork each other. 
 
@@ -823,7 +823,7 @@ when four taps at the bottom of the page are clicked, Fragment is changed to an 
 
  --	Purpose:
 
-NowActivity shows users’ current posture. It helps users grasp what posture and how long they have adopted.  \\
+NowActivity shows users' current posture. It helps users grasp what posture and how long they have adopted.  \\
 
  --	Functionality:
 
@@ -837,7 +837,7 @@ com/example/lg/healper_proto/
 NowActivity.java
 \end{verbatim}
 
- --	Class componenets:
+ --	Class components:
 
 a. callValues method 
 
@@ -882,7 +882,7 @@ call\_()data method in onCreateView loads a recent year's data of users from ser
 
 b. print\_()graphs method 
 
-Using data that is saved in variables through call\_()datas method data, makes graphs and displays them in Stat Page.\\\\
+Using data that is saved in variables through call\_()data method data, makes graphs and displays them in Stat Page.\\\\
 
 7.	TipActivity\\
 
@@ -945,7 +945,7 @@ Setting up a common pressure value is impossible since every users have differen
 \end{center}
 \end{figure}
 
-The overall usecase is shown in the Figure 20. Our project's plattform is Android-Mobile Application. So, first user should download our application and execute the program to do self-orthotherapy. And if user executed the program, a dialog window to get permission of bluetooth and connect with arduino would pop up. Then user will find the proper device and connect with the arduino and finnally could see the first page of our application. After that if user has registered already, user could enter into the next functions like 'Posture Correction' or 'Analysis'. If not, user should sign-up and register user’s data into the program's database to use this program.   
+The overall usecase is shown in the Figure 20. Our project's platform is Android-Mobile Application. So, first user should download our application and execute the program to do self-orthotherapy. And if user executed the program, a dialog window to get permission of bluetooth and connect with arduino would pop up. Then user will find the proper device and connect with the arduino and finally could see the first page of our application. After that if user has registered already, user could enter into the next functions like 'Posture Correction' or 'Analysis'. If not, user should sign-up and register user's data into the program's database to use this program.   
 
 \begin{figure}[H]
 \begin{center}
@@ -978,7 +978,7 @@ Find PW& \multicolumn{2}{p{6.75cm}|}{\raggedright And the second is 'Find PW'. U
 \end{figure}
  		  
  
-If user had not registered in our program, user should do sign-up to use the program. There are four componentes to register user's data into the database. It could meet the need of 'Sign-Up' requirement. Sign-Up Usecase is shown in the Figure 22 and the Use Case's descriptions are written in the table x.
+If user had not registered in our program, user should do sign-up to use the program. There are four components to register user's data into the database. It could meet the need of 'Sign-Up' requirement. Sign-Up Usecase is shown in the Figure 22 and the Use Case's descriptions are written in the table x.
 
 \begin{table}[h]
 {\renewcommand\arraystretch{1.25}
@@ -992,7 +992,7 @@ E-mail& \multicolumn{2}{p{6.75cm}|}{\raggedright User should write one e-mail ad
 \end{tabular}}
 \end{table} 
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \begin{center}
     \includegraphics[scale=0.8]{img_20.png}
     \caption{Posture Correction Usecase} 
@@ -1021,16 +1021,16 @@ Push-Alarm& \multicolumn{2}{p{4.5cm}|}{\raggedright If user has wrong posture, p
 \end{figure}
                
 
- The another main function of this program is to offer analysis information using user’s posture data. And there are three sub functions in analysis part ‘Now’, ‘Statistics’and ‘Tips’. Analysis Usecase is shown in the Figure 24 and the Use Case’s descriptions are written in the table x. 
+ The another main function of this program is to offer analysis information using user's posture data. And there are three sub functions in analysis part 'Now', 'Statistics'and 'Tips'. Analysis Usecase is shown in the Figure 24 and the Use Case's descriptions are written in the table x. 
 
 \begin{table}[h]
 {\renewcommand\arraystretch{1.25}
 \caption{The description of Analysis Usecase}
 \begin{tabular}{|c|l|l|} \hline
 Use Case & \multicolumn{2}{c|}{Description} \\ \hline\hline
-Now & \multicolumn{2}{p{6cm}|}{\raggedright User could see the two type of time in the ‘Now’ part. First is the the time of user’s actual working hour. And the second is the time how much user keeps good posture and bad posture. And user could see the 3D feature reflecting user’s present posture. So, it could help user recognize their present posture visually.} \\ \hline
-Statistics & \multicolumn{2}{p{6cm}|}{\raggedright User could see the three type of analysing graphical data such as ‘Day’, ‘Week’ and ‘Month’. The user’s data is saved in the database and the program analyzes that data and shows the graphical graph using that data. So, user could see the data distribution according to the selected period(User could select period by touching the upper tab).  It meets the ‘Statistics’ and ‘Visualization’ requirements.} \\ \hline
-Tips & \multicolumn{2}{p{6cm}|}{\raggedright User could see the some videos about stretching good for posture correction. And some of exercieses which are good for posture correction  are recommended in this page.} \\ \hline
+Now & \multicolumn{2}{p{6cm}|}{\raggedright User could see the two type of time in the 'Now' part. First is the the time of user's actual working hour. And the second is the time how much user keeps good posture and bad posture. And user could see the 3D feature reflecting user's present posture. So, it could help user recognize their present posture visually.} \\ \hline
+Statistics & \multicolumn{2}{p{6cm}|}{\raggedright User could see the three type of analysing graphical data such as 'Day', 'Week' and 'Month'. The user's data is saved in the database and the program analyzes that data and shows the graphical graph using that data. So, user could see the data distribution according to the selected period(User could select period by touching the upper tab).  It meets the 'Statistics' and 'Visualization' requirements.} \\ \hline
+Tips & \multicolumn{2}{p{6cm}|}{\raggedright User could see the some videos about stretching good for posture correction. And some of exercises which are good for posture correction  are recommended in this page.} \\ \hline
 \end{tabular}}
 \end{table}
 
@@ -1042,7 +1042,7 @@ Tips & \multicolumn{2}{p{6cm}|}{\raggedright User could see the some videos abou
 \end{figure}
   	        	  
 
- User could do four functions in the Setting page. Those are ‘On/Off Push’, ‘Setting Push time’, ‘Initializing pressure value’ and ‘Log-Out’. This functions could help user cutomize program’s functions. Setting Usecase is shown in the Figure 24 and the Use Case’s descriptions are written in the table x.
+ User could do four functions in the Setting page. Those are 'On/Off Push', 'Setting Push time', 'Initializing pressure value' and 'Log-Out'. This functions could help user cutomize program's functions. Setting Usecase is shown in the Figure 24 and the Use Case's descriptions are written in the table x.
 
 \begin{table}[h]
 {\renewcommand\arraystretch{1.25}
@@ -1051,7 +1051,7 @@ Tips & \multicolumn{2}{p{6cm}|}{\raggedright User could see the some videos abou
 Use Case & \multicolumn{2}{c|}{Description} \\ \hline\hline
 On/Off Push & \multicolumn{2}{p{5cm}|}{\raggedright User could change the status of push alarm by On/Off. When user has urgent project meetint or needs to keep mobile phone silent, this function would be needed.} \\ \hline
 Setting Push time & \multicolumn{2}{p{5cm}|}{\raggedright User could set the time when user get the push alarm. The time has range from 1 to 10 minutes. For example, if user selects 2 minutes in this page(Default value is 1 minute)user would get push alarm when user keeps bad posture for 2 minutes.  } \\ \hline
-Initializing pressure value & \multicolumn{2}{p{5cm}|}{\raggedright User could intialize pressure value in this page. The reason why user uses this function is that the actual user could be changed. So, when the actual user is changed the program initializes the pressure value making average value getting five times pressure values. } \\ \hline
+Initializing pressure value & \multicolumn{2}{p{5cm}|}{\raggedright User could initialize pressure value in this page. The reason why user uses this function is that the actual user could be changed. So, when the actual user is changed the program initializes the pressure value making average value getting five times pressure values. } \\ \hline
 Log-Out & \multicolumn{2}{p{5cm}|}{\raggedright User could do Log-Out in this page. This function is required when user do not want to use this program or take out his/her own data to the database. } \\ \hline
 \end{tabular}}
 \end{table}
