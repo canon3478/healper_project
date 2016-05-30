@@ -70,7 +70,7 @@ Development & Hakjun & -- Make a overall plan about developing \\
 
 Manager& Kim & program and managing the budget \\ 
 
-&  & -- Reflect users'needs \\ \hline
+&  & -- Reflect users' needs \\ \hline
 
 \end{tabular}
 
@@ -88,7 +88,7 @@ In modern society, most office workers spend over 12 hours each day sitting on a
 
 Therefore, maintaining a good posture in a forced sedentary lifestyle has a great significance to keep them healthy. Nevertheless, when office workers concentrate on working or loosen the tension, posture would be disturbed. So we would like to develop an application to help them correct their wrong postures.
 
-The application can recognize the position by using Arduino and pressure sensor. The application will perform the correction of posture immediately by informing the users’ incorrect postures. This application is expected to greatly contribute to maintaining a healthy posture and lifestyle of the modern office workers. 
+The application can recognize the position by using Arduino and pressure sensor. The application will perform the correction of posture immediately by informing the users' incorrect postures. This application is expected to greatly contribute to maintaining a healthy posture and lifestyle of the modern office workers. 
 \\\\\\
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
@@ -188,7 +188,7 @@ User can set the status of getting push alarm(On/Off) and the time when the user
 
 -- Provide Scores
 
-Users can grasp how well they have sat for today as this application provides today’s posture score. Users can also check whether their postures are improving or not.
+Users can grasp how well they have sat for today as this application provides today's posture score. Users can also check whether their postures are improving or not.
 
 -- Body Balance Measurements
 
@@ -402,7 +402,7 @@ Development & Hakjun & -- Make a overall plan about developing \\
 
 Manager& Kim & program and managing the budget \\ 
 
-&  & -- Reflect users'needs \\ \hline
+&  & -- Reflect users' needs \\ \hline
 
 \end{tabular}\\\\\\\\
 
@@ -454,7 +454,7 @@ The reason why we choose the FSR-406 is the specifications of FSR-406 are suitab
 \caption{FSR-406 specifications}
 \begin{tabular}{|c|cc}  \hline\hline
 Thickness& \multicolumn{2}{p{6cm}|}{\raggedright 0.018'' (0.46 mm)} \\ \hline
-Active area& \multicolumn{2}{p{6cm}|}{\raggedright 38.1mm * 38.1mm} \\ \hline
+Active area& \multicolumn{2}{p{6cm}|}{\raggedright 38.1mm $x$ 38.1mm} \\ \hline
 Connector& \multicolumn{2}{p{6cm}|}{\raggedright AMP Female connector} \\ \hline
 Minimum load& \multicolumn{2}{p{6cm}|}{\raggedright 0.1N} \\ \hline
 Maximum load& \multicolumn{2}{p{6cm}|}{\raggedright 10N} \\ \hline \hline
@@ -521,8 +521,50 @@ In this part, we describe a way of classifying sitting postures. Posture classif
 
 
 
-Second issue is the time depedency. We have to push alarm to users when they are doing wrong postures. So, it is needed to decide when we do alarm function. We set time standard from 1 minute to 10 minutes. User could select time when user gets push alarms while user keeps wrong posture. 
+Second issue is the time dependency. We have to push alarm to users when they are doing wrong postures. So, it is needed to decide when we do alarm function. We set time standard from 1 minute to 10 minutes. User could select time when user gets push alarms while user keeps wrong posture. 
    And the last issue is weight dependency. The sensor values would increase linearly or non-linearly with an increase in weight. Therefore, it would be effective to divide the sensor values by the total value. And the each user's pressure value is different when user does 'Normal' posture. So, if user registers in our application, the user's initial pressure values are saved in the database and our algorithm uses each user's data to recognize posture. And we offer the function which initializes user's weight in the application. 
+\subsection{Specification for Bluetooth communication}
+
+We use Arduino board and bluetooth module to get pressure values in the application and do wireless communication. There are many ways doing wireless communication with Arduino such as Wifi, XBee, Bluetooth etc. But Wifi wastes electronic power consuming too much and the connection status is sometimes not stable. And XBee is not widely used because smart phone and pc should have XBee module. On the other hand, Bluetooth module is cheaper than Wifi module and is widely used compared to Xbee because most of the smart phone and pc could recognize bluetooth module. And we use 'Arduino Uno R3' and 'HC-06' because 'Arduino Uno R3' is the basic platform among arduino series and 'HC-06' bluetooth module has excellent performance compared with other bluetooth modules and both of them have very good cost-effectiveness. And bluetooth sets the link with 'Master' and 'Slave' way. If mobile application communicates with arduino bluetooth, the smart phone becomes 'Master' and Arduino becomes 'Slave'. So, we connect HC-06 with Arduino Uno R3, this is shown in Figure 8.
+
+\begin{figure}[h]
+\begin{center}
+    \includegraphics[scale=0.45]{img_02}
+    \caption{Connection of arduino with bluetooth module} 
+\end{center}
+\end{figure}
+
+The 'Blue' line is connection RX pin of HC-06 with digital I/O number 2 of Arduino (RX pin gets some signal from Arduino). The 'Green' line is connection TX pin of HC-06 with digital I/O number 3 of Arduino (TX pin transmits some signal from bluetooth). The 'Black' line is connection GND pin of HC-06 with GND of Arduino (GND is a voltage emitter). The 'Red' line is connection VCC pin of HC-06 with 5V of Arduino (VCC is a votage collector). 
+
+And we set HC-06's options to test status of connection with bluetooth and pc. The sample option values of HC-06 are shown in below box.\\
+
+\fbox{
+  \parbox{0.42\textwidth}{
+    1. Test
+   Instruction word: AT 
+   Return Value: OK\\
+ 
+2. Version Checking
+   Instruction word: AT+VERSION
+   Return Value: OKlinvorV1.8 \\
+
+3. Name Change
+   Instruction word: AT+NAME
+   Return Value : OKsetname\\
+
+4. Baud rate Setting
+    Instruction word: AT+BAUD(Baud rate menu value).
+    Baud rate menu:
+     1 - 1200,  2 - 2400, 3 - 4800,  4 - 9600
+     5 - 19200,  6 - 38400, 7 - 57600,  8 - 115200 
+    Return Value : OK Baud rate (ex : OK9600)\\
+
+5. PIN Setting
+   Instruction word: AT+PIN(4 digits).
+   Return Value
+ : OKsetPIN
+  }
+}
 
 \subsection{Specification for front-end application pages\\}
 
@@ -575,7 +617,7 @@ Second issue is the time depedency. We have to push alarm to users when they are
  
 In specific, it counts the number of hours of your correct posture and bad posture separately. So, it is possible to check the number of hours of correct posture only. (Lower Timer)
 
- The number of hours exported from this page will be saved in the server as well. Moreover, once the user maintains a bad posture for a long time, the user will recieve a push notification that warns his/her long-time bad  posture.\\
+ The number of hours exported from this page will be saved in the server as well. Moreover, once the user maintains a bad posture for a long time, the user will receive a push notification that warns his/her long-time bad  posture.\\
 
  --Stat Page
 
@@ -619,7 +661,7 @@ This page shows up when you click the 'Setting' tab below this page. The first f
 
 The second function is to set the time when user gets push alarms while user keeps wrong posture. It ranges from minimum 1 minute to maximum 10 minutes. For example, if you set your time to 2 minutes and you maintain a bad posture for 2 minutes, you will directly receive a notification.
 
-The third function resets the pressure value that matches the users' body. According to individuals' weight and environment, the pressure value differs. Hence, it is necessary to save individuals' initial pressure value of the  correct posture in the server. The last but not least function is log-out. It allows the user to log out from the app.
+The third function resets the pressure value that matches the users' body. According to individuals' weight and environment, the pressure value differs. Hence, it is necessary to save individuals' initial pressure value of the  correct posture in the server. The last but not least function is log-out. It allows the user to log out from the app.\\
 
  -- Body Balance Page 
  In this page users could take picture of their upper body sitting on the chair. And the program analyses the users body balance by comparing left and right location of shoulder, chest and waist. Then the program shows how much the users body is twisted using degree. For example if the user's left shoulder is tilted to the left about 30 degrees, the user could see the status of the body balance by green and red line(Green line is criteria line meaning good body balance and the Red line shows how much the body is tilted.)and the message like ''Your left shoulder is tilted to the left about 30 degrees'' is shown. 
@@ -707,7 +749,7 @@ In Arduino\\
 
 a. Setup method 
 
-Setup method is used firstly when the arduino is executed. In this program, the speeds of serial communication and bluetooth communication are established in setup method. Variables and Pin value that is connected with the pressure sensors are declared and established. 
+Setup method is used firstly when the Arduino is executed. In this program, the speeds of serial communication and bluetooth communication are established in setup method. Variables and Pin value that is connected with the pressure sensors are declared and established. 
 
 b. Loop method 
 
@@ -731,11 +773,11 @@ com/example/lg/healper_proto/
 MainActivity.java
 \end{verbatim}
 
- -- Class componenets:
+ -- Class components:
 
 a. BLTConnection method
 
-Relationship between the pressure sensors and smartphone is necessary because this program receives users' posture data from the pressure sensor. In onClick method, BLTConnection method performs on/off functions and searching/connecting devices functions of bluetooth. Therefore, BLTConnection method is necessary in the first page, that is to say Log-In Page. 
+Relationship between the pressure sensors and smartphone is necessary because this program receives users’ posture data from the pressure sensor. In onClick method, BLTConnection method performs on/off functions and searching/connecting devices functions of bluetooth. Therefore, BLTConnection method is necessary in the first page, that is to say Log-In Page. 
 
 b. OnClickListener
 
@@ -809,7 +851,7 @@ com/example/lg/healper_proto/
 TapActivity.java
  \end{verbatim}
  
- --	Class componenets:
+ --	Class components:
 
 a. Init method
 
@@ -882,7 +924,7 @@ call\_()data method in onCreateView loads a recent year's data of users from ser
 
 b. print\_()graphs method 
 
-Using data that is saved in variables through call\_()data method data, makes graphs and displays them in Stat Page.\\\\
+Using data that is saved in variables through call\_()datas method data, makes graphs and displays them in Stat Page.\\\\
 
 7.	TipActivity\\
 
@@ -916,7 +958,7 @@ This program basically lets users know that they are maintaining bad posture by 
 
  -- Location of source code:
 
-\begin{verbatim}, 
+\begin{verbatim}
 Healper_Proto/app/src/main/java/
 com/example/lg/healper_proto/
 SettingActivity.java
@@ -934,18 +976,18 @@ There is a list box in Setting Page. In this list box, there are ten options; fr
  
 c. initiate pressure value method
 
-Setting up a common pressure value is impossible since every users have different pressure values. Therefore, we made it possible that every users configure their own pressures value. When initialization button in Setting Page is clicked, the average pressure value that has input for five seconds is saved in application and also in server. This program judges whether users' current postures are wrong or not comparing with the saved values. 
+Setting up a common pressure value is impossible since every users have different pressure values. Therefore, we made it possible that every users configure their own pressures value. When initialization button in Setting Page is clicked, the average pressure value that has input for five seconds is saved in application and also in server. This program judges whether users' current postures are wrong or not comparing with the saved values. \\\\\\
 
 
 \section{Use Cases}
 \begin{figure}[H]
 \begin{center}
-    \includegraphics[scale=0.6]{img_17.jpg}
+    \includegraphics[scale=0.58]{img_17.jpg}
     \caption{Overall Usecase} 
 \end{center}
 \end{figure}
 
-The overall usecase is shown in the Figure 20. Our project's platform is Android-Mobile Application. So, first user should download our application and execute the program to do self-orthotherapy. And if user executed the program, a dialog window to get permission of bluetooth and connect with arduino would pop up. Then user will find the proper device and connect with the arduino and finally could see the first page of our application. After that if user has registered already, user could enter into the next functions like 'Posture Correction' or 'Analysis'. If not, user should sign-up and register user's data into the program's database to use this program.   
+The overall usecase is shown in the Figure 16. Our project's platform is Android-Mobile Application. So, first user should download our application and execute the program to do self-orthotherapy. And if user executed the program, a dialog window to get permission of bluetooth and connect with Arduino would pop up. Then user will find the proper device and connect with the Arduino and finally could see the first page of our application. After that if user has registered already, user could enter into the next functions like 'Posture Correction' or 'Analysis'. If not, user should sign-up and register user's data into the program's database to use this program.   
 
 \begin{figure}[H]
 \begin{center}
@@ -954,7 +996,7 @@ The overall usecase is shown in the Figure 20. Our project's platform is Android
 \end{center}
 \end{figure}
  		
-To use self-orthotherapy program, user should log-in to our system. But if user fails to do log-in, there are two ways of solving this problem. These are 'Find ID' and 'Find PW'. Log-In Usecase is shown in the Figure 21 and the Use Case's descriptions are written in the table x.  
+To use self-orthotherapy program, user should log-in to our system. But if user fails to do log-in, there are two ways of solving this problem. These are 'Find ID' and 'Find PW'. Log-In Usecase is shown in the Figure 17 and the Use Case's descriptions are written in the table 8.  
 
 
 
@@ -978,7 +1020,7 @@ Find PW& \multicolumn{2}{p{6.75cm}|}{\raggedright And the second is 'Find PW'. U
 \end{figure}
  		  
  
-If user had not registered in our program, user should do sign-up to use the program. There are four components to register user's data into the database. It could meet the need of 'Sign-Up' requirement. Sign-Up Usecase is shown in the Figure 22 and the Use Case's descriptions are written in the table x.
+If user had not registered in our program, user should do sign-up to use the program. There are four componentes to register user's data into the database. It could meet the need of 'Sign-Up' requirement. Sign-Up Usecase is shown in the Figure 18 and the Use Case's descriptions are written in the table 9.
 
 \begin{table}[h]
 {\renewcommand\arraystretch{1.25}
@@ -992,7 +1034,7 @@ E-mail& \multicolumn{2}{p{6.75cm}|}{\raggedright User should write one e-mail ad
 \end{tabular}}
 \end{table} 
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \begin{center}
     \includegraphics[scale=0.8]{img_20.png}
     \caption{Posture Correction Usecase} 
@@ -1000,7 +1042,7 @@ E-mail& \multicolumn{2}{p{6.75cm}|}{\raggedright User should write one e-mail ad
 \end{figure}
  	  
 
-The main function of this program is to correct user's bad posture when user sits down on the chair. So, setting the user's own pressure value is mendatory. Because people have different physical size and weight. Initializing pressure value  is the function to meet that requirement. After initializing pressure value, user could get alarm message when they keep bad posture. Posture Correction Usecase is shown in the Figure 23 and the Use Case's descriptions are written in the table x.
+The main function of this program is to correct user's bad posture when user sits down on the chair. So, setting the user's own pressure value is mendatory. Because people have different physical size and weight. Initializing pressure value  is the function to meet that requirement. After initializing pressure value, user could get alarm message when they keep bad posture. Posture Correction Usecase is shown in the Figure 19 and the Use Case's descriptions are written in the table 10.
 
 \begin{table}[h]
 {\renewcommand\arraystretch{1.25}
@@ -1021,7 +1063,7 @@ Push-Alarm& \multicolumn{2}{p{4.5cm}|}{\raggedright If user has wrong posture, p
 \end{figure}
                
 
- The another main function of this program is to offer analysis information using user's posture data. And there are three sub functions in analysis part 'Now', 'Statistics'and 'Tips'. Analysis Usecase is shown in the Figure 24 and the Use Case's descriptions are written in the table x. 
+ The another main function of this program is to offer analysis information using user's posture data. And there are three sub functions in analysis part 'Now', 'Statistics' and 'Tips'. Analysis Usecase is shown in the Figure 20 and the Use Case's descriptions are written in the table 11. 
 
 \begin{table}[h]
 {\renewcommand\arraystretch{1.25}
@@ -1042,7 +1084,7 @@ Tips & \multicolumn{2}{p{6cm}|}{\raggedright User could see the some videos abou
 \end{figure}
   	        	  
 
- User could do four functions in the Setting page. Those are 'On/Off Push', 'Setting Push time', 'Initializing pressure value' and 'Log-Out'. This functions could help user cutomize program's functions. Setting Usecase is shown in the Figure 24 and the Use Case's descriptions are written in the table x.
+ User could do four functions in the Setting page. Those are 'On/Off Push', 'Setting Push time', 'Initializing pressure value' and 'Log-Out'. This functions could help user customize program's functions. Setting Usecase is shown in the Figure 21 and the Use Case's descriptions are written in the table 12.
 
 \begin{table}[h]
 {\renewcommand\arraystretch{1.25}
@@ -1051,7 +1093,7 @@ Tips & \multicolumn{2}{p{6cm}|}{\raggedright User could see the some videos abou
 Use Case & \multicolumn{2}{c|}{Description} \\ \hline\hline
 On/Off Push & \multicolumn{2}{p{5cm}|}{\raggedright User could change the status of push alarm by On/Off. When user has urgent project meetint or needs to keep mobile phone silent, this function would be needed.} \\ \hline
 Setting Push time & \multicolumn{2}{p{5cm}|}{\raggedright User could set the time when user get the push alarm. The time has range from 1 to 10 minutes. For example, if user selects 2 minutes in this page(Default value is 1 minute)user would get push alarm when user keeps bad posture for 2 minutes.  } \\ \hline
-Initializing pressure value & \multicolumn{2}{p{5cm}|}{\raggedright User could initialize pressure value in this page. The reason why user uses this function is that the actual user could be changed. So, when the actual user is changed the program initializes the pressure value making average value getting five times pressure values. } \\ \hline
+Initializing pressure value & \multicolumn{2}{p{5cm}|}{\raggedright User could intialize pressure value in this page. The reason why user uses this function is that the actual user could be changed. So, when the actual user is changed the program initializes the pressure value making average value getting five times pressure values. } \\ \hline
 Log-Out & \multicolumn{2}{p{5cm}|}{\raggedright User could do Log-Out in this page. This function is required when user do not want to use this program or take out his/her own data to the database. } \\ \hline
 \end{tabular}}
 \end{table}
@@ -1060,49 +1102,6 @@ Log-Out & \multicolumn{2}{p{5cm}|}{\raggedright User could do Log-Out in this pa
 
 .\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-
-
-\section{Software Installation Guide\\}
-\quad8.1 How to install?
-
-\begin{figure}[htbp]
-\begin{center}
-%    \includegraphics[scale=0.18]{img_install01}
-    \caption{Searching at playsotre} 
-\end{center}
-\end{figure}
-
-First, you have to access the playstore(android) or App Store(iOS) and search [SMART BROCHURE]. \\
-
-\begin{figure}[htbp]
-\begin{center}
-%    \includegraphics[scale=0.18]{img_install02}
-    \caption{Access the application page} 
-\end{center}
-\end{figure}
-
-Second, click the [installation] button and download the [SMART BROCHURE] to your smartphone.\\
-
-\begin{figure}[htbp]
-\begin{center}
-%    \includegraphics[scale=0.18]{img_install03}
-    \caption{Downloaded to your smartphone} 
-\end{center}
-\end{figure}
-
-Finally, you finish the installation. \\\\\\
-
-\begin{figure}[htbp]
-\begin{center}
-%    \includegraphics[scale=0.4]{img_qrcode}
-    \caption{install using QRcode} 
-\end{center}
-\end{figure}
-
-Or, take this QR-code and access to the Playstore.\\\\\\\\\\\\\\\\
-
-\section{Discussion}
-\quad First of all, it was really hard for us to make the device communicate with beacons. Since we didn?t have any SDK that works with our beacons, we had to develop the code from nothing. Therefore, we searched about it on the website, which gives developers android APIs that it supports. In the Bluetooth category, we were able to find the information about Bluetooth Low Energy(BLE), which was necessary for our project. We had to study about the threads in the android, how to use Bluetooth in our application, and make it possible to run the service on the background of the device. In addition, we tried the communication of mobile application and the server for the first time. There were just a few of problem in the language, but we had to study about the JSON type, which we used to send and receive the information about the exhibitions and brochures. Moreover, we had a good chance to use the new programs, ?filezilla? and  ?pgadmin? we used for our server. Also, we had some trouble to use Latex and Github. We were very confused when professor told us that we have to use them. After a lot of tries, we were able to be used to use them. After getting used to it, we sincerely felt that it is really important to communicate with teammates in the project. From this class, we could deal with so many unfamiliar softwares and hardwares and learn how to go through the project from these process. Because there were a lot of our first tries, such as developing back-end server and linking it with the front-end applications. We also learned that keeping the deadline for each process is one of the most important components, in order not to delay the whole project. It was really a good experience for us and we feel that our ability and confidence has been improved a lot, so we would like to say thank you, professor. Additionally, (which you may already know about) we think it is better that doing usecase at the first step of the documentation because it would be better for us to draw the blueprint of our project documentation.
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
 % For figures, \caption should occur after the \includegraphics.
