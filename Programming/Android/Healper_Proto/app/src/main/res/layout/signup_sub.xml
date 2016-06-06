@@ -17,6 +17,7 @@
             android:layout_height="match_parent"
             android:gravity="center"/>
         <EditText
+            android:id="@+id/ID"
             android:layout_width="1dp"
             android:layout_weight="0.5"
             android:layout_height="match_parent"
@@ -30,6 +31,7 @@
         android:layout_marginBottom="10dp"
         android:weightSum="1">
         <Button
+            android:id="@+id/Re_Check"
             android:text="중복 확인"
             android:layout_weight="0.72"
             android:layout_width="1dp"
@@ -48,6 +50,7 @@
             android:layout_height="match_parent"
             android:gravity="center"/>
         <EditText
+            android:id="@+id/PW"
             android:layout_width="1dp"
             android:layout_weight="0.5"
             android:layout_height="match_parent"
@@ -66,6 +69,7 @@
             android:layout_height="match_parent"
             android:gravity="center"/>
         <EditText
+            android:id="@+id/Name"
             android:layout_width="1dp"
             android:layout_weight="0.5"
             android:layout_height="match_parent"
@@ -84,6 +88,7 @@
             android:layout_height="match_parent"
             android:gravity="center"/>
         <EditText
+            android:id="@+id/Email"
             android:layout_width="1dp"
             android:layout_weight="0.5"
             android:layout_height="match_parent"
@@ -97,6 +102,7 @@
         android:layout_marginTop="20dp"
         android:weightSum="1">
         <Button
+            android:id="@+id/Signup"
             android:text="Sign Up"
             android:layout_width="1dp"
             android:layout_weight="0.35"

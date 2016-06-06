@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
     //static final int REQUEST_ENABLE_BT = 0;
@@ -18,6 +21,8 @@ public class MainActivity extends Activity {
     private static final String TAG = "MAIN";
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
+    public static EditText ID_edit;
+    public static EditText PW_edit;
 
     private BluetoothService bluetoothService_obj = null;
 
@@ -32,11 +37,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_sub);
 
+        ID_edit = (EditText) findViewById(R.id.ID);
+        PW_edit = (EditText) findViewById(R.id.PW);
+
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
         //BLTConnection();
 
         Button Log_In = (Button) findViewById(R.id.Login);
         Log_In.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Toast.makeText(MainActivity.this, toServer.LogIn(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), TapActivity.class);
                 startActivity(intent);
             }
@@ -50,6 +60,7 @@ public class MainActivity extends Activity {
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
+
     }
     @Override
     public void onDestroy() {
