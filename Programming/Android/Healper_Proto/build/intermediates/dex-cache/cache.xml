@@ -1,3 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-appindexing-8.1.0_f7b078d0b332cabb4024e09491a35f439cecb9aa.jar" />
+    </item>
+    <item
+        jar="C:\Users\LG\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_afad4a467df5bcec2c97cdf2f436ddf8cc872975.jar" />
+    </item>
+    <item
+        jar="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_50e381d0ca53194372d8d21bdd66c586ffb70824.jar" />
+    </item>
+    <item
+        jar="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_c9c62fa5f6d5ca7f84f5be62b66b1d224c151086.jar" />
+    </item>
+    <item
+        jar="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\libs\achartengine-1.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b2ca57d9a948b2e20efd1e2549f5677c4660ae20">
+        <dex dex="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\pre-dexed\debug\achartengine-1.2.0_1cc0e168e974187ce364422692e1f9496e34921e.jar" />
+    </item>
+    <item
+        jar="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_1408a66ce4456ee104e52a411b77703d7300814c.jar" />
+    </item>
+    <item
+        jar="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="C:\Users\LG\Documents\healper_project\Programming\Android\Healper_Proto\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.1.0_598f13083b250419a9ffbcd4bcb624189f74f4fa.jar" />
+    </item>
+
+</items>

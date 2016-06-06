@@ -4,7 +4,6 @@
     package="com.example.lg.healper_proto" >
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.pemission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
