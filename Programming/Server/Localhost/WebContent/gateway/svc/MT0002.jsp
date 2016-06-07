@@ -5,8 +5,6 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "javax.naming.*,javax.sql.*" %>
 
-<!-- Sign Up SQL Query -->
-
 <%!
 
 	public Map<String, Object> MT0002execute(Map<String, Object> mapRes){
@@ -31,17 +29,23 @@
     	pstm.setString(4, strEmail);
     	pstm.executeUpdate();
     	
-    	mapResData.put("INSERT Success", true);
+    	mapResData.put("INSERT", "Success");
     	
     	/* 
     	여러개
     	while(rs.next()) {
     		
     	} */
+		if(conn!=null)
+			conn.close();
+		if(pstm!=null)
+			pstm.close();
     	
 	} catch (Exception ex) {
 		ex.printStackTrace();
+		mapResData.put("INSERT", "Failed");
 	}
+	mapResData.put("svccd","MT0002");
 	
 	return mapResData;
 	

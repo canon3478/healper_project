@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
     private static final int REQUEST_ENABLE_BT = 2;
     public static EditText ID_edit;
     public static EditText PW_edit;
+    public static Boolean loginresult = false;
 
     private BluetoothService bluetoothService_obj = null;
 
@@ -46,9 +47,16 @@ public class MainActivity extends Activity {
         Button Log_In = (Button) findViewById(R.id.Login);
         Log_In.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, toServer.LogIn(), Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), TapActivity.class);
-                startActivity(intent);
+                //Toast.makeText(MainActivity.this,toServer.LogIn(),Toast.LENGTH_LONG).show();
+                loginresult = toJSON.execute(toServer.LogIn());
+                //Toast.makeText(MainActivity.this, toJSON.execute(toServer.LogIn()), Toast.LENGTH_LONG).show();
+                if(loginresult) {
+                    Intent intent = new Intent(getApplicationContext(), TapActivity.class);
+                    startActivity(intent);
+                    TapActivity.stat_init();
+                }
+                else
+                    Toast.makeText(MainActivity.this, "비밀번호가 틀렸습니다.", Toast.LENGTH_LONG).show();
             }
         });
         Button Sign_Up = (Button) findViewById(R.id.signup);

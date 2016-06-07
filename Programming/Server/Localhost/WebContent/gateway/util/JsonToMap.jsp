@@ -11,6 +11,7 @@
 		System.out.println("################# Where is the Error 1 #################");
 		System.out.println("JsonData : " + JsonData);
 		mapJson = JSONObject.fromObject(JsonData);
+		System.out.println("JsonData : " + mapJson.toString());
 		System.out.println("################# Where is the Error 2 #################");
 		strSvcCd = (String) mapJson.get("svccd");
 		System.out.println("################# Where is the Error 3 #################");

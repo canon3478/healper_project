@@ -99,8 +99,10 @@ public class toServer  {
     }
 
     public static String toURL(JSONObject s) {
-        String temp= "http://172.20.10.4:8081/healper/gateway/?JSONData=" + s.toString();
+        String temp= "http://casa.maden.kr/healper/gateway/?JSONData=" + s.toString();
         StringBuilder res_data = new StringBuilder("");
+        BufferedReader reader;
+        String line;
 
         try {
             URL url = new URL(temp);
@@ -115,9 +117,10 @@ public class toServer  {
             }
             int resCode = conn.getResponseCode();
             if (resCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                String line = reader.readLine();
-                res_data.append(line);
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                while((line = reader.readLine()) != null) {
+                    res_data.append(line);
+                }
                 reader.close();
                 conn.disconnect();
             }
@@ -126,6 +129,9 @@ public class toServer  {
             Log.e("SampleHTTP", "Exception in processing response.", ex);
             ex.printStackTrace();
         }
-        return res_data.toString();
+        finally {
+
+        }
+        return res_data.toString().trim();
     }
 }

@@ -28,7 +28,7 @@
 		
 		System.out.println("################# Request Data #################");
 		System.out.println("Address::"+request.getRemoteAddr());
-		System.out.println("JSON::"+strJsonData);
+		System.out.println("JSON::"+mapReqJson.toString());
 		System.out.println("Service::"+strSvcCd);
 		System.out.println("Data::"+mapReqJson.toString());
 		
@@ -47,12 +47,10 @@
 
 	arrayRsltJson.add(mapResJson);
 	mapRsltJson.put("res_data", arrayRsltJson);
-	mapRsltJson.put("svccd", strSvcCd);
 	
 	JSONObject jsonOut = JSONObject.fromObject(mapRsltJson);
 	
-	//out.print(jsonOut.toString());
-	out.print(jsonOut.get("res_data"));
+	out.print(jsonOut.toString());
 	
 	long end = System.currentTimeMillis(); 
 	

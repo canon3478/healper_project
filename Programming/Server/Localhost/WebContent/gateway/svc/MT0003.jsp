@@ -5,8 +5,6 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "javax.naming.*,javax.sql.*" %>
 
-<!-- 중복 확인 SQL Query -->
-
 <%!
 
 	public Map<String, Object> MT0003execute(Map<String, Object> mapRes){
@@ -26,17 +24,24 @@
     	rs = pstm.executeQuery();
     	
     	if(rs.next()) 
-    		mapResData.put("isOk", false);
+    		mapResData.put("isOK", "Impossible");
+    	else
+    		mapResData.put("isOK", "Possible");
     	
     	/* 
     	여러개
     	while(rs.next()) {
     		
     	} */
+		if(conn!=null)
+			conn.close();
+		if(pstm!=null)
+			pstm.close();
 	} catch (Exception ex) {
 		ex.printStackTrace();
-		mapResData.put("isOk", true);
+		
 	}
+	mapResData.put("svccd","MT0003");
 	
 	return mapResData;
 	

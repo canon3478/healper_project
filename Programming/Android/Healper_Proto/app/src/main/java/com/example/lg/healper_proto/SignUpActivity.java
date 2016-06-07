@@ -28,14 +28,20 @@ public class SignUpActivity extends Activity {
         Button Redudancy_check = (Button) findViewById(R.id.Re_Check);
         Redudancy_check.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(SignUpActivity.this, toServer.RedudancyCheck(), Toast.LENGTH_LONG).show();
+                if(toJSON.execute(toServer.RedudancyCheck()))
+                    Toast.makeText(SignUpActivity.this, "회원가입이 가능한 ID입니다.", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(SignUpActivity.this, "이미 존재하는 ID입니다.", Toast.LENGTH_LONG).show();
             }
         });
 
         Button Sign_Up = (Button) findViewById(R.id.Signup);
         Sign_Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(SignUpActivity.this, toServer.SignUp(), Toast.LENGTH_LONG).show();
+                if(toJSON.execute(toServer.SignUp()))
+                    Toast.makeText(SignUpActivity.this, "Sign Up Success", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(SignUpActivity.this, "Sign Up Failed", Toast.LENGTH_LONG).show();
             }
         });
 

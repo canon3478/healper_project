@@ -5,7 +5,6 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "javax.naming.*,javax.sql.*" %>
 
-<!-- Log In SQL Query -->
 
 <%!
 	public Map<String, Object> MT0001execute(Map<String, Object> mapRes){
@@ -27,15 +26,7 @@
 	    	
 	    	if(rs.next()) {
 		    	if(strUpw.equals(rs.getString("UPW"))) {
-		    		log_in_success = true;
-		    	}
-		    	else {
-		    		log_in_success = false;
-		    	}
-		    	mapResData.put("Log-In Success?", log_in_success);
-		    	
-		    	if(log_in_success) {
-			    	try {
+		    		try {
 			    		sqlquery = "SELECT * FROM data WHERE UID = ?";
 			    		pstm = conn.prepareStatement(sqlquery);
 				    	pstm.setString(1, strUid);
@@ -49,20 +40,25 @@
 			    	}
 			    	catch (Exception ex) {
 			    		ex.printStackTrace();
-			    	}
-				}
-		    	else {
-		    		mapResData.put("Failed Log-in", false);
+			    	} 
+		    		mapResData.put("Log-In", "Success");
 		    	}
 	    	}
-	    	
-	    	
-		} catch (Exception ex) {
+	    	else {
+		    	mapResData.put("Log-in", "Failed");
+	    	}
+
+			if(conn!=null)
+				conn.close();
+			if(pstm!=null)
+				pstm.close();
+		} 
+		catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		
 		
-		
+		mapResData.put("svccd","MT0001");
 		return mapResData;
 	
     }
