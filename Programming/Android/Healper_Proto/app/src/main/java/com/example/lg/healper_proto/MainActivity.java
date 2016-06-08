@@ -1,42 +1,62 @@
 package com.example.lg.healper_proto;
 
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.StrictMode;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
-    static final int REQUEST_ENABLE_BT = 0;
+    //static final int REQUEST_ENABLE_BT = 0;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private GoogleApiClient client;
-    ArrayAdapter mAdapter;
+    //ArrayAdapter mAdapter;
+    private static final String TAG = "MAIN";
+    private static final int REQUEST_CONNECT_DEVICE = 1;
+    private static final int REQUEST_ENABLE_BT = 2;
+    public static EditText ID_edit;
+    public static EditText PW_edit;
+    public static Boolean loginresult = false;
+
+    private BluetoothService bluetoothService_obj = null;
+
+    private final Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_sub);
 
-        BLTConnection();
+        ID_edit = (EditText) findViewById(R.id.ID);
+        PW_edit = (EditText) findViewById(R.id.PW);
+
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
+        //BLTConnection();
 
         Button Log_In = (Button) findViewById(R.id.Login);
         Log_In.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), TapActivity.class);
-                startActivity(intent);
+                //Toast.makeText(MainActivity.this,toServer.LogIn(),Toast.LENGTH_LONG).show();
+                loginresult = toJSON.execute(toServer.LogIn());
+                //Toast.makeText(MainActivity.this, toJSON.execute(toServer.LogIn()), Toast.LENGTH_LONG).show();
+                if(loginresult) {
+                    Intent intent = new Intent(getApplicationContext(), TapActivity.class);
+                    startActivity(intent);
+                    TapActivity.stat_init();
+                }
+                else
+                    Toast.makeText(MainActivity.this, "비밀번호가 틀렸습니다.", Toast.LENGTH_LONG).show();
             }
         });
         Button Sign_Up = (Button) findViewById(R.id.signup);
@@ -48,53 +68,14 @@ public class MainActivity extends Activity {
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-    }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Main Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.example.lg.healper_proto/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Main Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.example.lg.healper_proto/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
     }
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(mReceiver);
+        //unregisterReceiver(mReceiver);
     }
+    /*
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -109,30 +90,40 @@ public class MainActivity extends Activity {
         }
     };
     public void BLTConnection() {
-        BluetoothAdapter mBloothAdapter = BluetoothAdapter.getDefaultAdapter();
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        if (mBloothAdapter == null) {
+        if (mBluetoothAdapter == null) {
         }
         else {
-            if (!mBloothAdapter.isEnabled()) {
+            if (!mBluetoothAdapter.isEnabled()) {
                 Intent enableBIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBIntent, REQUEST_ENABLE_BT);
             }
         }
 
-        mBloothAdapter.startDiscovery();
+        mBluetoothAdapter.startDiscovery();
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         registerReceiver(mReceiver, filter);
 
-        /*
-        Set<BluetoothDevice> pairedDevices = mBloothAdapter.getBondedDevices();
-        if (pairedDevices.size() > 0) {
-            for (BluetoothDevice device : pairedDevices) {
-                mAdapter.clear();
-                BluetoothClass.Device deviceClass = new BluetoothClass.Device();
+        Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+        if(pairedDevices.size() > 0){ // 하나 이상 검색될 경우
 
+            for(BluetoothDevice device : pairedDevices){
+                mAdapter.clear();
+                Device deviseClass = new Device();
+                deviseClass.Name = device.getName();
+                deviseClass.Address = device.getAddress();
+                mAdapter.add(deviseClass);
             }
-        }
-        */
     }
+
+    Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+    if (pairedDevices.size() > 0) {
+        for (BluetoothDevice device : pairedDevices) {
+            mAdapter.clear();
+            BluetoothClass.Device deviceClass = new BluetoothClass.Device();
+
+        }
+    }
+        */
 }

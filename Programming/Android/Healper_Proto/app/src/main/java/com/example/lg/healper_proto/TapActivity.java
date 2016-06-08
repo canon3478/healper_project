@@ -9,6 +9,10 @@ import android.widget.TabHost;
 public class TapActivity extends FragmentActivity {
 
     private FragmentTabHost mTabHost;
+    public static float[] data = new float[360];
+    public static float[] data_years = new float[12];
+    public static float[] data_months = new float[30];
+    public static float[] data_weeks = new float[7];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +20,26 @@ public class TapActivity extends FragmentActivity {
         setContentView(R.layout.tap_sub);
 
         init();
+    }
+    public static void stat_init() {
+        int i, j;
+        float sum=0;
+        for(i=0;i<12;i++) {
+            for (j = 0; j < 30; j++) {
+                sum += data[i * 30 + j];
+            }
+            data_years[i] = sum/30;
+            sum=0;
+        }
+
+        for (i = 1; i <= 30; i++) {
+            data_months[30-i] = data[360-i];
+        }
+
+        for(i=1;i<=7;i++) {
+            data_weeks[7-i] = data[360-i];
+        }
+
     }
     public void init() {
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
@@ -48,5 +72,7 @@ public class TapActivity extends FragmentActivity {
         tabSpec.setIndicator(btn);
         b = new Bundle();
         mTabHost.addTab(tabSpec, SettingActivity.class, b);
+
+
     }
 }
