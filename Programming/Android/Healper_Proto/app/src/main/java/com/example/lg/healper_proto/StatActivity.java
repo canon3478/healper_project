@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import org.achartengine.ChartFactory;
@@ -22,23 +23,43 @@ public class StatActivity extends Fragment {
     protected GraphicalView mChartView;
     protected GraphicalView mChartView2;
     protected GraphicalView mChartView3;
-
+    LinearLayout layout1;
     View view = null;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        //call_datas();
-        //
-
         view = inflater.inflate(R.layout.stat_sub, container, false);
-        LinearLayout layout1 = (LinearLayout) view.findViewById(R.id.Chart1);
-        LinearLayout layout2 = (LinearLayout) view.findViewById(R.id.Chart2);
-        LinearLayout layout3 = (LinearLayout) view.findViewById(R.id.Chart3);
+
+        Button year_stat = (Button) view.findViewById(R.id.year);
+        Button month_stat = (Button) view.findViewById(R.id.month);
+        Button week_stat = (Button) view.findViewById(R.id.week);
+
+        layout1 = (LinearLayout) view.findViewById(R.id.Chart1);
+        //LinearLayout layout2 = (LinearLayout) view.findViewById(R.id.Chart2);
+        //LinearLayout layout3 = (LinearLayout) view.findViewById(R.id.Chart3);
         mChartView = ChartFactory.getBarChartView(getContext(), getBarChartDataset_year(), getRenderer_year(), BarChart.Type.DEFAULT);
         mChartView2 = ChartFactory.getBarChartView(getContext(), getBarChartDataset_month(), getRenderer_month(), BarChart.Type.DEFAULT);
         mChartView3 = ChartFactory.getBarChartView(getContext(), getBarChartDataset_week(), getRenderer_week(), BarChart.Type.DEFAULT);
+
         layout1.addView(mChartView);
-        layout2.addView(mChartView2);
-        layout3.addView(mChartView3);
+
+        year_stat.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                layout1.removeAllViews();
+                layout1.addView(mChartView);
+            }
+        });
+        month_stat.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                layout1.removeAllViews();
+                layout1.addView(mChartView2);
+            }
+        });
+        week_stat.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                layout1.removeAllViews();
+                layout1.addView(mChartView3);
+            }
+        });
         return view;
     }
 

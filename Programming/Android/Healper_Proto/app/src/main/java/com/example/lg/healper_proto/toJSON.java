@@ -42,8 +42,11 @@ public class toJSON {
             if(logInResult.equals("Success")){
                 JSONArray data= (JSONArray)json.get("data");
                 int i=0;
-                while(i < data.length()) {
-                    TapActivity.data[359-i] = (float)data.getInt(i);
+                while(i < 360) {
+                    if (i < data.length())
+                        TapActivity.data[359-i] = (float)data.getInt(i);
+                    else
+                        TapActivity.data[359-i] = 0;
                     i++;
                 }
                 return true;
