@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,6 +36,8 @@ public class BluetoothActivity extends Activity {
     TextView textInfo, textStatus;
     ListView listViewPairedDevice;
     LinearLayout inputPane;
+    EditText inputField;
+    Button btnSend;
 
     ArrayAdapter<BluetoothDevice> pairedDeviceAdapter;
     private UUID myUUID;
@@ -51,6 +55,19 @@ public class BluetoothActivity extends Activity {
         textInfo = (TextView)findViewById(R.id.info);
         textStatus = (TextView)findViewById(R.id.status);
         listViewPairedDevice = (ListView)findViewById(R.id.pairedlist);
+
+        inputPane = (LinearLayout)findViewById(R.id.inputpane);
+        inputField = (EditText)findViewById(R.id.input);
+        btnSend = (Button)findViewById(R.id.send);
+        btnSend.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                if(myThreadConnected!=null){
+                    byte[] bytesToSend = inputField.getText().toString().getBytes();
+                    myThreadConnected.write(bytesToSend);
+                }
+            }});
 
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)){
             Toast.makeText(this,
@@ -278,20 +295,18 @@ public class BluetoothActivity extends Activity {
 
             while (true) {
                 try {
-                    bytes = this.connectedInputStream.read(buffer);
-                    final String e = new String(buffer, 0, bytes);
-                    runOnUiThread(new Runnable() {
+                    bytes = connectedInputStream.read(buffer);
+                    String strReceived = new String(buffer, 0, bytes);
+                    final String msgReceived = String.valueOf(bytes) +
+                            " bytes received:\n"
+                            + strReceived;
+
+                    runOnUiThread(new Runnable(){
+
+                        @Override
                         public void run() {
-                            switch (e) {
-                                case "1":
-                                    NowActivity.textview.setText("다리를 꼰 자세");
-                                    break;
-                                default:
-                                    NowActivity.textview.setText("바른 자세");
-                                    break;
-                            }
-                        }
-                    });
+                            textStatus.setText(msgReceived);
+                        }});
 
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
@@ -329,4 +344,3 @@ public class BluetoothActivity extends Activity {
     }
 
 }
-

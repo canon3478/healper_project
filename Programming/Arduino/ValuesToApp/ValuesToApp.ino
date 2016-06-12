@@ -47,27 +47,28 @@ void loop() {
   Serial.print("A4 : ");
   Serial.println(ps_Value[3]);
   Serial.println();
-  /*
-  BTSerial.print(ps_Value1);
-  delay(1000);
-  */
+
+
   if(default_Value[0] > ps_Value[0]+100) {
-    cnt_time[0] += 1;
-    if(cnt_time[0]>=3) {
-      Serial.println("Left Leg");
-    }
+    BTSerial.print("1");
+    Serial.println("1");
+  }
+  else if(default_Value[1] > ps_Value[1]+100) {
+    BTSerial.print("2");
+    Serial.println("2");
+  }
+  else if((ps_Value[2] > ps_Value[0]+100) && (ps_Value[3] > ps_Value[1]+100)) {
+    BTSerial.print("3");
+    Serial.println("3");
+  }
+  else if((default_Value[2] > ps_Value[0]+100) && (default_Value[3] > ps_Value[1]+100)) {
+    BTSerial.print("4");
+    Serial.println("4");
   }
   else {
-    cnt_time[0]=0;
-  }
-  if(default_Value[1] > ps_Value[1]+100) {
-    cnt_time[1] += 1;
-    if(cnt_time[1]>=3) {
-      Serial.println("Right Leg");
-    }
-  }
-  else {
-    cnt_time[1]=0;
+    BTSerial.print("0");
+    Serial.println("0");
   }
   delay(1000);
 }
+

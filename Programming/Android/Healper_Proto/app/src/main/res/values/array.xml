@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name = "time">
+    <string-array name="time">
         <item>10초</item>
         <item>1분</item>
         <item>2분</item>
