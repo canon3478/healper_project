@@ -97,17 +97,17 @@ public class MainActivity extends Activity {
         final String regId = GCMRegistrar.getRegistrationId(this);
         if (regId.equals("")) {
             // 단말 등록 호출
-            //Log.e("id", regId);
+            Log.e("id", regId);
         	GCMRegistrar.register(getBaseContext(), BasicInfo.PROJECT_ID);
         	
         } else {
             // 단말 등록되어 있음
         	if (GCMRegistrar.isRegisteredOnServer(this)) {
-              //  Log.e("id", regId);
+                Log.e("id", regId);
         		Log.d(TAG, "단말이 이미 등록되어 있습니다.");
         	} else {
                 // 단말 등록 호출
-               // Log.e("id", regId);
+                Log.e("id", regId);
             	GCMRegistrar.register(getBaseContext(), BasicInfo.PROJECT_ID);
         	}
             
