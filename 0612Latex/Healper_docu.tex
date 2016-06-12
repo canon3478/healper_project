@@ -576,7 +576,9 @@ The application can recognize the position by using Arduino and pressure sensor.
 
 -Android Studio(Using Java)
 
--MySQL\\
+-MySQL
+
+-pgAdmin(Using ProgreSQL)\\
 
 
 \subsection{Requirements for Developers}
@@ -684,9 +686,32 @@ Java is a general-purpose computer programming language that is concurrent, clas
 
 We should do many tests to recognize various users' postures using pressure values getting from FSR-406 pressure sensors. So, we use the open-source Arduino Software (IDE) and the best proper language to use this program is C. The open-source Arduino Software (IDE) makes it easy to write code and upload it to the board. It runs on Windows, Mac OS X, and Linux. The environment is written in Java and based on Processing and other open-source software. This software can be used with any Arduino board.\\
 
--- PHP
+-- JSON
 
-PHP is a server-side scripting language designed for web development but also used as a general-purpose scripting language that is especially suited to web development. PHP is fast, flexible and pragmatic language. And PHP makes the user write dynamic web files because PHP follows many sentence forms used in C, Java, Perl etc. And there is excellent documentation we can refer to. http://www.php.net/ has really good documentation with helpful user-contributed gotchas and code snippets. We can also find tons of tutorials, etc. around the web.\\
+We use JSON for data parsing between server and database. JSON is an open standard format that uses human-readable text to transmit data objects consisting of attribute and value pairs. It is used primarily to transmit data between a server and web application, as an alternative to XML. Although originally derived from the JavaScript scripting language, JSON is a language-independent data format.\\
+
+-- JavaScript and Apache Tomcat for server
+
+We use JavaScript language and Apache Tomcat library for building a server.
+The reason why we need the server is to save users' account information and their time data of posture, and to show those data in statistics analysis. 
+JavaScript is the programming language of HTML and the Web. 
+
+JavaScript is the programming language of HTML and the Web. JavaScript is a high-level, dynamic, untyped, and interpreted programming language. Alongside HTML and CSS, it is one of the three core technologies of World Wide Web content production; the majority of websites employ it and it is supported by all modern Web browsers without plug-ins. JavaScript is prototype-based with first-class functions, making it a multi-paradigm language, supporting object-oriented, imperative, and functional programming styles. 
+
+Although there are strong outward similarities between Javascript and Java, including language name, syntax, and respective standard libraries, the two are distinct languages and differ greatly in their design. Javascript was influenced by programming languages such as Self and Scheme.
+
+The Apache Tomcat software is an open source implementation of the Java Servlet, JavaServer Pages, Java Expression Language and Java WebSocket technologies. 
+The Apache Tomcat software is developed in an open and participatory environment. The Apache Tomcat project is intended to be a collaboration of the best-of-breed developers from around the world. 
+Apache Tomcat software powers numerous large-scale, mission-critical web applications across a diverse range of industries and organizations.\\
+
+
+-- PostgreSQL for database using pgAdmin
+
+The reason why we use PostgreSQL is that it has strength in inheritance and function. When an upper table is searched, all data of lower tables can be searched as well as the upper table. And when a lower table is created, a column that belongs to only the lower table can be added inheriting the upper table's column at the same time. Sometimes, the function written in the SQL statement that is called as 'Save procedure' can be used in server environment. Although control statement and iteration statement cannot be used, differs from other language, postgreSQL can be combined with other language.
+
+PostgreSQL, often simply Postgres, is an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance. As a database server, its primary function is to store data securely, supporting best practices, and to allow for retrieval at the request of other software applications. It can handle workloads ranging from small single-machine applications to large Internet-facing applications with many concurrent users.
+
+PgAdmin Portable is the PgAdmin whatever it is packaged with a launcher as a portable app, so we can manage PostgreSQL and above running on any platform, as well as commercial and derived versions of PostgreSQL such as Postgres Plus Advanced Server and Greenplum database. It has all the same features as PgAdmin, plus, it leaves no personal information behind on the machine we run it on, so we can take it with us wherever we go.\\
 
 3.	Provide a cost estimation for your built.\\
 
@@ -698,11 +723,11 @@ PHP is a server-side scripting language designed for web development but also us
 
 1)	Arduino
 
-The Uno is a microcontroller board based on the ATmega328P. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a 16 MHz quartz crystal, a USB connection, a power jack, an ICSP header and a reset button. It contains everything needed to support the microcontroller; simply connect it to a computer with a USB cable or power it with a AC-to-DC adapter or battery to get started. The Uno board and version 1.0 of Arduino Software (IDE) were the reference versions of Arduino, now evolved to newer releases. The Uno board is the first in a series of USB Arduino boards, and the reference model for the Arduino platform; for an extensive list of current, past or outdated boards see the Arduino index of boards.\\
+The Uno is a micro-controller board based on the ATmega328P. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analogue inputs, a 16 MHz quartz crystal, a USB connection, a power jack, an ICSP header and a reset button. It contains everything needed to support the micro-controller; simply connect it to a computer with a USB cable or power it with a AC-to-DC adapter or battery to get started. The Uno board and version 1.0 of Arduino Software (IDE) were the reference versions of Arduino, now evolved to newer releases. The Uno board is the first in a series of USB Arduino boards, and the reference model for the Arduino platform; for an extensive list of current, past or outdated boards see the Arduino index of boards.\\
 
 2)	Pressure Sensors
 
-The model 406 FSR is a single-zone Force Sensing Resistor optimized for use in human touch control of electronic devices such as automotive electronics, medical systems, and in industrial and robotics applications. FSRs are two-wire devices. They are robust polymer thick film (PTF) sensors that exhibit a decrease in resistance with increase in force applied to the surface of the sensor. It has a 39.6mm square active area and is available in 4 connection options. Interlink Electronics FSR 400 series is part of the single zone Force Sensing Resistor family.\\
+The model 406 FSR is a single-zone Force Sensing Resistor optimized for use in human touch control of electronic devices such as automotive electronics, medical systems, and in industrial and robotics applications. FSRs are two-wire devices. They are robust polymer thick film (PTF) sensors that exhibit a decrease in resistance with increase in force applied to the surface of the sensor. It has a 39.6 mm square active area and is available in 4 connection options. Interlink Electronics FSR 400 series is part of the single zone Force Sensing Resistor family.\\
 
 3)	Bluetooth Module
 
@@ -762,7 +787,9 @@ Jump Wire MM& 70 & 50 & 3500  \\ \hline
 
 5.	Using any commercial cloud platform (e.g., Amazons EC2) is definitely a BONUS.\\
 
- We will use Apache Web Server because it is the world's most widely used web server software. As of June 2013, Apache was estimated to serve 54.2 percent of all active website and 53.3 percent of the top servers across all domains. (The most important reason is we have already apache web server.)\\
+1) Amazon Web Server
+
+ We will use Amazon Web Server because it is the world's most widely used web server software. As of June 2013, Apache was estimated to serve 54.2 percent of all active website and 53.3 percent of the top servers across all domains. (The most important reason is we have already Amazon web server.)\\
 
 Apache Web Server has some features:
 
@@ -773,6 +800,12 @@ Apache Web Server has some features:
 - It can control web server more delicately
 
 - It is tested enough, so it is very stable.\\
+
+2) Google Clould Messaging (GCM)
+
+ We use Google Cloud Messaging for using push alarm function. Because getting push alarm is important function in our application. Users could recognize whether their sitting posture is right or wrong by push message.  
+
+Google Cloud Messaging (commonly referred to as GCM) is a mobile service developed by Google that enables third-party application developers to send notification data or information from developer-run servers to applications that target the Google Android Operating System, as well as applications or extensions developed for the Google Chrome internet browser. The GCM Service was first announced in August 2013 as a successor to Google's now-defunct Android Cloud to Device Messaging (C2DM) service, citing improvements to authentication and delivery, new API endpoints and messaging parameters, and the removal of limitations on API send-rates and message sizes.
 
 \subsection{Software in use}
 
