@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Healper_Proto2</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="spinner_array1">
+        <item>10sec</item>
+        <item>20sec</item>
+        <item>30sec</item>
+        <item>1min</item>
+        <item>2min</item>
+        <item>3min</item>
+        <item>4min</item>
+        <item>5min</item>
+
+    </string-array>
+</resources>

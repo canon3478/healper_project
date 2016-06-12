@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="5"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.5"
+        android:weightSum="3"
+        android:orientation="horizontal">
+
+        <Button
+            android:text="Week"
+            android:id="@+id/week"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <Button
+            android:text="Month"
+            android:id="@+id/month"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <Button
+            android:text="year"
+            android:id="@+id/year"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/Chart1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal">
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/Chart2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal">
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/Chart3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal">
+    </LinearLayout>
+</LinearLayout>
