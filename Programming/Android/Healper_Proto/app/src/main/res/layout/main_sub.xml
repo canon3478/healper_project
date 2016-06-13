@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
 
     <Button
+        android:layout_gravity="center_horizontal"
         android:id="@+id/btconnect"
         android:text="Bluetooth Connect"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"/>
     <ImageView
+        android:src="@drawable/healper_logo"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginBottom="50dp"/>
@@ -23,11 +29,13 @@
         android:weightSum="1">
         <TextView
             android:text="ID"
+            android:textColor="#000000"
             android:layout_width="1dp"
             android:layout_weight="0.2"
             android:layout_height="match_parent"
             android:gravity="center"/>
         <EditText
+            android:textColor="#000000"
             android:id="@+id/ID"
             android:layout_width="1dp"
             android:layout_weight="0.5"
@@ -42,16 +50,19 @@
         android:weightSum="1">
         <TextView
             android:text="PassWord"
+            android:textColor="#000000"
             android:layout_width="1dp"
             android:layout_weight="0.2"
             android:layout_height="match_parent"
             android:gravity="center"/>
         <EditText
+            android:textColor="#000000"
             android:id="@+id/PW"
             android:layout_width="1dp"
             android:layout_weight="0.5"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:inputType="textPassword"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

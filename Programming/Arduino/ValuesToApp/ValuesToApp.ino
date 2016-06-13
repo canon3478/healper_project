@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 SoftwareSerial BTSerial(2,3);
 
-int ps_Pin[] = {A0,A1,A2,A3};
+int ps_Pin[] = {A0,A4,A2,A3};
 int ps_Value[] = {0,0,0,0};
 int i;
 int default_Value[]={0,0,0,0};

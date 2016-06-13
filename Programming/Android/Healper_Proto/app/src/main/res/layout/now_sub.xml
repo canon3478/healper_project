@@ -3,52 +3,87 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="#FFFFFF">
     <TextView
-        android:text="오늘 당신의 근무 시간은"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="오늘 당신의 근무 시간은?"
+        android:textColor="#000000"
         android:textSize="25dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"/>
-    <Chronometer
-        android:id="@+id/chr"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:gravity="center"
-        android:textSize="100dp"
-        android:layerType="hardware"/>
-    <TextView
-        android:layout_marginTop="50dp"
-        android:text="그 중, 바른 자세로 앉은 시간은"
-        android:textSize="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"/>
-    <Chronometer
-        android:id="@+id/chr2"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:gravity="center"
-        android:textSize="100dp"
-        android:layerType="hardware"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_weight="1"
+        android:layout_height="110dp"
+        android:weightSum="1"
         android:orientation="horizontal">
-        <TextView
-            android:text="당신의 지금 자세는 :"
-            android:textSize="20dp"
+        <LinearLayout
             android:layout_width="1dp"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:gravity="center"/>
-        <TextView
-            android:id="@+id/sitting_statue"
-            android:textSize="20dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:text="바른 자세"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"/>
+            <Chronometer
+                android:id="@+id/chr"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:textSize="50dp"
+                android:layerType="hardware"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="1dp"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:gravity="center"/>
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+            <TextView
+                android:text="나쁜 자세"
+                android:layout_marginBottom="10dp"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"/>
+            <Chronometer
+                android:id="@+id/chr2"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:textSize="50dp"
+                android:layerType="hardware"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="현재 당신의 자세는?"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageView
+            android:src="@drawable/default_leg"
+            android:layout_marginTop="30dp"
+            android:id="@+id/IV"
+            android:clickable="true"
+            android:layout_width="178dp"
+            android:layout_height="200dp"/>
     </LinearLayout>
 </LinearLayout>

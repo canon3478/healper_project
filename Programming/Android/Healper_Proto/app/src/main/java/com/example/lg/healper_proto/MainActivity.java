@@ -20,6 +20,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_sub);
 
+        startActivity(new Intent(this, Splash.class));
+
         ID_edit = (EditText) findViewById(R.id.ID);
         PW_edit = (EditText) findViewById(R.id.PW);
 

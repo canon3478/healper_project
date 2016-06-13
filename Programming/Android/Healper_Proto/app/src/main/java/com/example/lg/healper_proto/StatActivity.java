@@ -97,7 +97,7 @@ public class StatActivity extends Fragment {
     public XYMultipleSeriesRenderer getRenderer_year() {
         XYSeriesRenderer renderer = new XYSeriesRenderer();
 
-        renderer.setColor(Color.parseColor("#158aea"));
+        renderer.setColor(Color.parseColor("#37AA7D"));
 
         XYMultipleSeriesRenderer myRenderer = new XYMultipleSeriesRenderer();
         myRenderer.addSeriesRenderer(renderer);
@@ -108,7 +108,8 @@ public class StatActivity extends Fragment {
         myRenderer.setYAxisMax(24);
 
         myRenderer.setShowGrid(true);
-        myRenderer.setGridColor(Color.parseColor("#c9c9c9"));
+        myRenderer.setGridColor(Color.parseColor("#FFFFFF"));
+
 
         myRenderer.setPanEnabled(true, false);
         myRenderer.setPanLimits(new double[]{0, 31.5, 0, 0});
@@ -132,7 +133,7 @@ public class StatActivity extends Fragment {
     public XYMultipleSeriesRenderer getRenderer_month() {
         XYSeriesRenderer renderer = new XYSeriesRenderer();
 
-        renderer.setColor(Color.parseColor("#158aea"));
+        renderer.setColor(Color.parseColor("#37AA7D"));
 
         XYMultipleSeriesRenderer myRenderer = new XYMultipleSeriesRenderer();
         myRenderer.addSeriesRenderer(renderer);
@@ -143,7 +144,7 @@ public class StatActivity extends Fragment {
         myRenderer.setYAxisMax(24);
 
         myRenderer.setShowGrid(true);
-        myRenderer.setGridColor(Color.parseColor("#c9c9c9"));
+        myRenderer.setGridColor(Color.parseColor("#FFFFFF"));
 
         myRenderer.setPanEnabled(true, false);
         myRenderer.setPanLimits(new double[]{0, 31.5, 0, 0});
@@ -167,7 +168,7 @@ public class StatActivity extends Fragment {
     public XYMultipleSeriesRenderer getRenderer_week() {
         XYSeriesRenderer renderer = new XYSeriesRenderer();
 
-        renderer.setColor(Color.parseColor("#158aea"));
+        renderer.setColor(Color.parseColor("#37AA7D"));
 
         XYMultipleSeriesRenderer myRenderer = new XYMultipleSeriesRenderer();
         myRenderer.addSeriesRenderer(renderer);
@@ -178,7 +179,7 @@ public class StatActivity extends Fragment {
         myRenderer.setYAxisMax(24);
 
         myRenderer.setShowGrid(true);
-        myRenderer.setGridColor(Color.parseColor("#c9c9c9"));
+        myRenderer.setGridColor(Color.parseColor("#FFFFFF"));
 
         myRenderer.setPanEnabled(true, false);
         myRenderer.setPanLimits(new double[]{0, 31.5, 0, 0});
