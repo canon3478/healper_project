@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TabHost;
 import android.widget.Toast;
 
@@ -24,6 +26,8 @@ import java.util.Set;
 import java.util.UUID;
 
 public class TapActivity extends FragmentActivity {
+
+    static PopupWindow popupWindow;
     private static final int REQUEST_ENABLE_BT = 1;
 
     BluetoothAdapter bluetoothAdapter;
@@ -44,7 +48,7 @@ public class TapActivity extends FragmentActivity {
     public static float[] data_weeks = new float[7];
     NowActivity nowActivity = new NowActivity();
     SettingActivity settingActivity = new SettingActivity();
-    static int time_pos = 0;
+    static int time_pos = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +124,7 @@ public class TapActivity extends FragmentActivity {
         myThreadConnected = new ThreadConnected(socket);
         myThreadConnected.start();
     }
+
 
     private class ThreadConnectBTdevice extends Thread {
 
@@ -229,12 +234,21 @@ public class TapActivity extends FragmentActivity {
                                 case "2":
                                     Right_Leg(nowActivity);
                                     break;
+                                case "3":
+                                    Front_Hunched(nowActivity);
+                                    break;
+                                case "4":
+                                    Right_Shoulder(nowActivity);
+                                    break;
+                                case "5":
+                                    Left_Shoulder(nowActivity);
+                                    break;
                                 default:
                                     Default_Leg(nowActivity);
                                     break;
                             }
-
-
+                            //if(nowActivity.cnt_bad > time_pos * 60 + 10)
+                            //    nowActivity.callPopup();
                         }});
 
                 } catch (IOException e) {
@@ -262,25 +276,76 @@ public class TapActivity extends FragmentActivity {
             }
         }
     }
-    public static void Left_Leg(NowActivity nowActivity) {
+    public static void Right_Shoulder(NowActivity nowActivity) {
+        if(nowActivity.cnt_bad == 0) {
+            nowActivity.Chr2.setBase(SystemClock.elapsedRealtime() - nowActivity.timer2);
+            nowActivity.Chr2.start();
+            nowActivity.Chr.stop();
+            nowActivity.timer = SystemClock.elapsedRealtime() - nowActivity.Chr.getBase();
+        }
         nowActivity.cnt_bad ++;
         nowActivity.cnt_correct = 0;
-        nowActivity.imageview.setImageResource(R.drawable.left_leg);
-        nowActivity.Chr.stop();
-        nowActivity.Chr2.start();
+        nowActivity.imageview.setImageResource(R.drawable.right_shoulder);
         //if(nowActivity.cnt_bad > TapActivity.time_pos)
         //    popup();
     }
+    public static void Left_Shoulder(NowActivity nowActivity) {
+        if(nowActivity.cnt_bad == 0) {
+            nowActivity.Chr2.setBase(SystemClock.elapsedRealtime() - nowActivity.timer2);
+            nowActivity.Chr2.start();
+            nowActivity.Chr.stop();
+            nowActivity.timer = SystemClock.elapsedRealtime() - nowActivity.Chr.getBase();
+        }
+        nowActivity.cnt_bad ++;
+        nowActivity.cnt_correct = 0;
+        nowActivity.imageview.setImageResource(R.drawable.left_shoulder);
+        //if(nowActivity.cnt_bad > TapActivity.time_pos)
+        //    popup();
+    }
+    public static void Front_Hunched(NowActivity nowActivity) {
+        if(nowActivity.cnt_bad == 0) {
+            nowActivity.Chr2.setBase(SystemClock.elapsedRealtime() - nowActivity.timer2);
+            nowActivity.Chr2.start();
+            nowActivity.Chr.stop();
+            nowActivity.timer = SystemClock.elapsedRealtime() - nowActivity.Chr.getBase();
+        }
+        nowActivity.cnt_bad ++;
+        nowActivity.cnt_correct = 0;
+        nowActivity.imageview.setImageResource(R.drawable.front);
+        if(nowActivity.cnt_bad > 5)
+            nowActivity.callPopup();
+    }
+    public static void Left_Leg(NowActivity nowActivity) {
+        if(nowActivity.cnt_bad == 0) {
+            nowActivity.Chr2.setBase(SystemClock.elapsedRealtime() - nowActivity.timer2);
+            nowActivity.Chr2.start();
+            nowActivity.Chr.stop();
+            nowActivity.timer = SystemClock.elapsedRealtime() - nowActivity.Chr.getBase();
+        }
+        nowActivity.cnt_bad ++;
+        nowActivity.cnt_correct = 0;
+        nowActivity.imageview.setImageResource(R.drawable.left_leg);
+    }
     public static void Right_Leg(NowActivity nowActivity) {
+        if(nowActivity.cnt_bad == 0) {
+            nowActivity.Chr2.setBase(SystemClock.elapsedRealtime() - nowActivity.timer2);
+            nowActivity.Chr2.start();
+            nowActivity.Chr.stop();
+            nowActivity.timer = SystemClock.elapsedRealtime() - nowActivity.Chr.getBase();
+        }
         nowActivity.cnt_bad ++;
         nowActivity.cnt_correct = 0;
         nowActivity.imageview.setImageResource(R.drawable.right_leg);
-        nowActivity.Chr.stop();
-        nowActivity.Chr2.start();
         //if(nowActivity.cnt_bad > TapActivity.time_pos)
         //    popup();
     }
     public static void Default_Leg(NowActivity nowActivity) {
+        if(nowActivity.cnt_correct == 0) {
+            nowActivity.Chr2.stop();
+            nowActivity.timer2 = SystemClock.elapsedRealtime() - nowActivity.Chr2.getBase();
+            nowActivity.Chr.setBase(SystemClock.elapsedRealtime() - nowActivity.timer);
+            nowActivity.Chr.start();
+        }
         nowActivity.cnt_bad = 0;
         nowActivity.cnt_correct ++;
         nowActivity.imageview.setImageResource(R.drawable.default_leg);
@@ -344,4 +409,5 @@ public class TapActivity extends FragmentActivity {
 
 
     }
+
 }

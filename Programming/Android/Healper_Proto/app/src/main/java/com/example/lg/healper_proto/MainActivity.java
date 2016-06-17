@@ -47,13 +47,6 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-        Button bt_connect = (Button) findViewById(R.id.btconnect);
-        bt_connect.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BluetoothActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
 }

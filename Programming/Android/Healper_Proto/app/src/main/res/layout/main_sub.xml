@@ -9,13 +9,6 @@
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/btconnect"
-        android:text="Bluetooth Connect"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="50dp"/>
     <ImageView
         android:src="@drawable/healper_logo"
         android:layout_width="match_parent"
