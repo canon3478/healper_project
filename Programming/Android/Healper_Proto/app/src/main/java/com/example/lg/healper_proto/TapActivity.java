@@ -1,21 +1,29 @@
 package com.example.lg.healper_proto;
 
+import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -31,6 +39,7 @@ public class TapActivity extends FragmentActivity {
     private static final int REQUEST_ENABLE_BT = 1;
 
     BluetoothAdapter bluetoothAdapter;
+    BluetoothDevice device;
 
     ArrayList<BluetoothDevice> pairedDeviceArrayList;
     ListView listViewPairedDevice;
@@ -47,8 +56,8 @@ public class TapActivity extends FragmentActivity {
     public static float[] data_months = new float[30];
     public static float[] data_weeks = new float[7];
     NowActivity nowActivity = new NowActivity();
-    SettingActivity settingActivity = new SettingActivity();
-    static int time_pos = 10;
+    static int time_pos = 0;
+    boolean standup = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +96,7 @@ public class TapActivity extends FragmentActivity {
 
         init();
     }
+
     private void setup() {
         Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
         if (pairedDevices.size() > 0) {
@@ -103,7 +113,7 @@ public class TapActivity extends FragmentActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
-                    BluetoothDevice device = (BluetoothDevice) parent.getItemAtPosition(position);
+                    device = (BluetoothDevice) parent.getItemAtPosition(position);
                     myThreadConnectBTdevice = new ThreadConnectBTdevice(device);
                     myThreadConnectBTdevice.start();
                 }
@@ -243,8 +253,11 @@ public class TapActivity extends FragmentActivity {
                                 case "5":
                                     Left_Shoulder(nowActivity);
                                     break;
-                                default:
+                                case "0":
                                     Default_Leg(nowActivity);
+                                    break;
+                                default:
+                                    Stand_Up(nowActivity);
                                     break;
                             }
                             //if(nowActivity.cnt_bad > time_pos * 60 + 10)
@@ -276,8 +289,9 @@ public class TapActivity extends FragmentActivity {
             }
         }
     }
-    public static void Right_Shoulder(NowActivity nowActivity) {
-        if(nowActivity.cnt_bad == 0) {
+    public void Right_Shoulder(NowActivity nowActivity) {
+        if(standup || nowActivity.cnt_bad == 0) {
+            standup = false;
             nowActivity.Chr2.setBase(SystemClock.elapsedRealtime() - nowActivity.timer2);
             nowActivity.Chr2.start();
             nowActivity.Chr.stop();
@@ -286,11 +300,12 @@ public class TapActivity extends FragmentActivity {
         nowActivity.cnt_bad ++;
         nowActivity.cnt_correct = 0;
         nowActivity.imageview.setImageResource(R.drawable.right_shoulder);
-        //if(nowActivity.cnt_bad > TapActivity.time_pos)
-        //    popup();
+        if(nowActivity.cnt_bad > time_pos * 60 + 10)
+            callPopup("Don't lean right!");
     }
-    public static void Left_Shoulder(NowActivity nowActivity) {
-        if(nowActivity.cnt_bad == 0) {
+    public void Left_Shoulder(NowActivity nowActivity) {
+        if(standup || nowActivity.cnt_bad == 0) {
+            standup = false;
             nowActivity.Chr2.setBase(SystemClock.elapsedRealtime() - nowActivity.timer2);
             nowActivity.Chr2.start();
             nowActivity.Chr.stop();
@@ -299,11 +314,12 @@ public class TapActivity extends FragmentActivity {
         nowActivity.cnt_bad ++;
         nowActivity.cnt_correct = 0;
         nowActivity.imageview.setImageResource(R.drawable.left_shoulder);
-        //if(nowActivity.cnt_bad > TapActivity.time_pos)
-        //    popup();
+        if(nowActivity.cnt_bad > time_pos * 60 + 10)
+            callPopup("Don't lean left!");
     }
-    public static void Front_Hunched(NowActivity nowActivity) {
-        if(nowActivity.cnt_bad == 0) {
+    public void Front_Hunched(NowActivity nowActivity) {
+        if(standup || nowActivity.cnt_bad == 0) {
+            standup = false;
             nowActivity.Chr2.setBase(SystemClock.elapsedRealtime() - nowActivity.timer2);
             nowActivity.Chr2.start();
             nowActivity.Chr.stop();
@@ -312,11 +328,12 @@ public class TapActivity extends FragmentActivity {
         nowActivity.cnt_bad ++;
         nowActivity.cnt_correct = 0;
         nowActivity.imageview.setImageResource(R.drawable.front);
-        if(nowActivity.cnt_bad > 5)
-            nowActivity.callPopup();
+        if(nowActivity.cnt_bad > time_pos * 60 + 10)
+            callPopup("Don't lean forward!");
     }
-    public static void Left_Leg(NowActivity nowActivity) {
-        if(nowActivity.cnt_bad == 0) {
+    public void Left_Leg(NowActivity nowActivity) {
+        if(standup || nowActivity.cnt_bad == 0) {
+            standup = false;
             nowActivity.Chr2.setBase(SystemClock.elapsedRealtime() - nowActivity.timer2);
             nowActivity.Chr2.start();
             nowActivity.Chr.stop();
@@ -325,9 +342,12 @@ public class TapActivity extends FragmentActivity {
         nowActivity.cnt_bad ++;
         nowActivity.cnt_correct = 0;
         nowActivity.imageview.setImageResource(R.drawable.left_leg);
+        if(nowActivity.cnt_bad > time_pos * 60 + 10)
+            callPopup("Don't cross your left leg!");
     }
-    public static void Right_Leg(NowActivity nowActivity) {
-        if(nowActivity.cnt_bad == 0) {
+    public void Right_Leg(NowActivity nowActivity) {
+        if(standup || nowActivity.cnt_bad == 0) {
+            standup = false;
             nowActivity.Chr2.setBase(SystemClock.elapsedRealtime() - nowActivity.timer2);
             nowActivity.Chr2.start();
             nowActivity.Chr.stop();
@@ -336,11 +356,12 @@ public class TapActivity extends FragmentActivity {
         nowActivity.cnt_bad ++;
         nowActivity.cnt_correct = 0;
         nowActivity.imageview.setImageResource(R.drawable.right_leg);
-        //if(nowActivity.cnt_bad > TapActivity.time_pos)
-        //    popup();
+        if(nowActivity.cnt_bad > time_pos * 60 + 10)
+            callPopup("Don't cross your right leg!");
     }
-    public static void Default_Leg(NowActivity nowActivity) {
-        if(nowActivity.cnt_correct == 0) {
+    public void Default_Leg(NowActivity nowActivity) {
+        if(standup || nowActivity.cnt_correct == 0) {
+            standup = false;
             nowActivity.Chr2.stop();
             nowActivity.timer2 = SystemClock.elapsedRealtime() - nowActivity.Chr2.getBase();
             nowActivity.Chr.setBase(SystemClock.elapsedRealtime() - nowActivity.timer);
@@ -349,10 +370,19 @@ public class TapActivity extends FragmentActivity {
         nowActivity.cnt_bad = 0;
         nowActivity.cnt_correct ++;
         nowActivity.imageview.setImageResource(R.drawable.default_leg);
-        nowActivity.Chr2.stop();
-        nowActivity.Chr.start();
-        //if(nowActivity.cnt_bad > TapActivity.time_pos)
-        //    popup();
+
+    }
+    public void Stand_Up(NowActivity nowActivity) {
+        standup =  true;
+        if(nowActivity.cnt_correct == 0) {
+            nowActivity.Chr2.stop();
+            nowActivity.timer2 = SystemClock.elapsedRealtime() - nowActivity.Chr2.getBase();
+        }
+        else if(nowActivity.cnt_bad == 0) {
+            nowActivity.Chr.stop();
+            nowActivity.timer = SystemClock.elapsedRealtime() - nowActivity.Chr.getBase();
+        }
+        nowActivity.imageview.setImageResource(R.drawable.default_leg);
 
     }
 
@@ -410,4 +440,42 @@ public class TapActivity extends FragmentActivity {
 
     }
 
+    public void callPopup(String s) {
+        nowActivity.Chr.stop();
+        nowActivity.timer = SystemClock.elapsedRealtime() - nowActivity.Chr.getBase();
+        nowActivity.Chr2.stop();
+        nowActivity.timer2 = SystemClock.elapsedRealtime() - nowActivity.Chr2.getBase();
+        nowActivity.cnt_bad = 0;
+
+        LayoutInflater layoutInflater = (LayoutInflater) TapActivity.this
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        final View popupView = layoutInflater.inflate(R.layout.popup, null);
+
+        popupWindow = new PopupWindow(popupView,
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT,
+                true);
+
+        popupWindow.setTouchable(true);
+        popupWindow.setFocusable(true);
+        TextView textview = (TextView) popupView.findViewById(R.id.tv);
+        textview.setText(s);
+        //bg.getBackground().setAlpha(100);
+
+        popupWindow .showAtLocation(popupView, Gravity.CENTER, 0, 0);
+        //Name = (EditText) popupView.findViewById(R.id.edtimageName);
+        // role= (Spinner) popupView.findViewById(R.id.spinner);
+        // si = (Spinner) popupView.findViewById(R.id.spinner2);
+
+        ((ImageView) popupView.findViewById(R.id.check))
+                .setOnClickListener(new View.OnClickListener() {
+
+                    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+                    public void onClick(View arg0) {
+                        popupWindow.dismiss();
+                        nowActivity.cnt_bad = 0;
+                    }
+                });
+
+    }
 }

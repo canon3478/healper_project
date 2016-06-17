@@ -15,7 +15,7 @@
         <TextView
             android:layout_marginRight="30dp"
             android:textColor="#000000"
-            android:text="푸쉬끄기"
+            android:text="Push setting"
             android:layout_width="120dp"
             android:layout_height="20dp"
             android:gravity="center"/>
@@ -34,7 +34,7 @@
         <TextView
             android:layout_marginRight="30dp"
             android:textColor="#000000"
-            android:text="시간설정"
+            android:text="Time setting"
             android:layout_width="120dp"
             android:layout_height="20dp"
             android:gravity="center"/>
@@ -54,13 +54,13 @@
         <TextView
             android:layout_marginRight="30dp"
             android:textColor="#000000"
-            android:text="압력초기화"
+            android:text="Value initializing"
             android:layout_width="120dp"
             android:layout_height="20dp"
             android:gravity="center"/>
         <Button
             android:layout_marginLeft="30dp"
-            android:text="초기화"
+            android:text="Initialize"
             android:layout_width="120dp"
             android:layout_height="40dp" />
     </LinearLayout>
@@ -72,7 +72,7 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/logout"
-            android:text="로그아웃"
+            android:text="Log out"
             android:layout_width="300dp"
             android:layout_height="50dp" />
     </LinearLayout>

@@ -25,15 +25,15 @@
 
 				<TextView
 					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
+					android:layout_height="30dp"
 					android:layout_centerHorizontal="true"
 					android:layout_centerVertical="true"
 					android:text="WARNING"
 					android:textSize="15dp"
 					android:textColor="#FFFFFF"/>
 				<ImageView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
+					android:layout_width="30dp"
+					android:layout_height="30dp"
 					android:layout_marginRight="80dp"
 					android:layout_alignParentRight="true"
 					android:id="@+id/check"
@@ -51,6 +51,7 @@
 				android:gravity="center"
 				>
 				<TextView
+					android:id="@+id/tv"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="Don't cross your right leg!"

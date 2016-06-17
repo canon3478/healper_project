@@ -48,7 +48,11 @@ void loop() {
   Serial.println(ps_Value[3]);
   Serial.println();
 
-  if((ps_Value[0] < 500) & (ps_Value[3] < 500)) {
+  if((ps_Value[0] < 200) & (ps_Value[1] < 200) & (ps_Value[2] < 200) & (ps_Value[3]<200)) {
+    BTSerial.print("7");
+    Serial.print("7");
+  }
+  else if((ps_Value[0] < 500) & (ps_Value[3] < 500)) {
       BTSerial.print("4");
       Serial.println("4");
     }

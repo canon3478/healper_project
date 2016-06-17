@@ -23,8 +23,8 @@ public class NowActivity extends Fragment {
     public static int cnt_bad=0, cnt_correct=0;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.now_sub, container, false);
-
         view = print_time(inflater, container, savedInstanceState);
+
         imageview = (ImageView) view.findViewById(R.id.IV);
 
         return view;
@@ -33,6 +33,7 @@ public class NowActivity extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
     }
 
     public View print_time(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
