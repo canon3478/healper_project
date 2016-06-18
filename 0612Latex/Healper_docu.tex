@@ -323,7 +323,8 @@
 \usepackage{float}
 \usepackage{array}
 \usepackage{tabularx,booktabs}
-
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue}
 \usepackage{amsmath} %Import AMS math package
 \graphicspath{{/C:/Users/Jace/Desktop/3학년1학기/소프트웨어공학/Healpers/latex/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
@@ -1590,15 +1591,89 @@ Use Case & \multicolumn{2}{c|}{Description} \\ \hline\hline
 On/Off Push & \multicolumn{2}{p{5cm}|}{\raggedright User could change the status of push alarm by On/Off. When user has urgent project meetint or needs to keep mobile phone silent, this function would be needed.} \\ \hline
 Setting Push time & \multicolumn{2}{p{5cm}|}{\raggedright User could set the time when user get the push alarm. The time has range from 1 to 10 minutes. For example, if user selects 2 minutes in this page(Default value is 1 minute)user would get push alarm when user keeps bad posture for 2 minutes.  } \\ \hline
 Initializing pressure value & \multicolumn{2}{p{5cm}|}{\raggedright User could intialize pressure value in this page. The reason why user uses this function is that the actual user could be changed. So, when the actual user is changed the program initializes the pressure value making average value getting five times pressure values. } \\ \hline
-Log-Out & \multicolumn{2}{p{5cm}|}{\raggedright User could do Log-Out in this page. This function is required when user do not want to use this program or take out his/her own data to the database. } \\ \hline
+Log-Out & \multicolumn{2}{p{5cm}|}{\raggedright User could do Log-Out in this page. This function is required when user do not want to use this program or take out his/her own data to the database. } \\\\\\ \hline
 \end{tabular}}
 \end{table}
 
 
+\section{Software Installation Guide}
 
-.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-\section{Conclusion}
-The conclusion goes here.
+How to install?
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.33]{git1}
+    \caption{Git Hub} 
+\end{center}
+\end{figure}
+
+First, you have to sign-up in the 'Git Hub' site because we make our program open-source. The reason why we make our program open-source is that we want that the more people use our program, and people could add some functions if they want. So, you go to the \url{https://github.com/} and should do sign-up first.
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.33]{git2}
+    \caption{Git Hub} 
+\end{center}
+\end{figure}
+
+Second, you go to \url{https://github.com/canon3478/healper_project} 
+This is our project's URL, so you could see and download all of things including source code.
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.33]{git3}
+    \caption{Git Hub} 
+\end{center}
+\end{figure}
+
+And you click the 'Clone or download' button, then you could use and modify the program.
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.33]{android1}
+    \caption{Android Studio} 
+\end{center}
+\end{figure}
+
+Then, you go to 
+\url{http://developer.android.com/sdk/index.html}
+ and download the 'Android Studio'.
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.88]{android2}
+    \caption{Android Studio} 
+\end{center}
+\end{figure}
+
+Finally, you run the 'Android Studio' and use our 'Healper' program in free of charge.\\
+
+\section{Discussion}
+
+
+We used many different development tool to develop 'Healper'. We used four tools; Java for developing Android, JavaScript for XML and server, SQL for database and Arduino IDE(C) for algorithm of Arduino. So, sending each value from a tool to other tools was difficult.
+
+When we had to send the value from Arduino to Android using bluetooth, developing bluetooth function was very hard. Also, because it was our first time to develop server, sending the values from Android to server and database.
+
+The electric current was not flowed and when we connect hardware, we tried to do soldering to increase hardware's stability but the soldering is not easy work. So, we bought electric tape and make connection with breadboard and other things. 
+
+And our first object is that we want to make soft cushion when user sits, but the some of hardware put into the cushion, it is a little bit not comfortable to user. 
+
+And because pressure sensor is too expensive (one unit is about 14,000 won), so we had to change our plan (Our first plan is to buy nine (3x3) or sixteen (4x4) pressure sensors).  
+ 
+Lastly, it was also the first time to write a documentation using LaTex. Since it is unfamiliar to us, we had a very hard time to learn how to use LaTex. Especially, it was the hardest for us to make a table, move the table and set the margin of the table. However, we realized that Latex is very convenient program to write a documentation more cleanly than any other program.
+ 
+
+\section* {issues}
+
+
+1) Our program is based on bluetooth and getting pressure values every second. So, Our program runs out of battery too much now. So. We have to think about how to reduce battery consume next version.
+
+2) We will develop posture recognition function by adding pressure sensors and adjusting algorithm. Now we use just four pressure sensor. But we use more pressure sensors, program could recognize the more wrong postures precisely.
+
+3) We will add new function which checks how much user's body is tilted with photo and numerical value.
+
+4) We will add new function which searches an orthopedic office near users. 
 
 
 
@@ -1607,10 +1682,6 @@ The conclusion goes here.
 
 
 % use section* for acknowledgment
-\section*{Acknowledgment}
-
-
-The authors would like to thank...
 
 
 
@@ -1638,13 +1709,6 @@ The authors would like to thank...
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
 
 
 
