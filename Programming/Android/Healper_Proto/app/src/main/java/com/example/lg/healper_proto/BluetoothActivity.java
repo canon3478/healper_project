@@ -41,8 +41,7 @@ public class BluetoothActivity extends Activity {
 
     ArrayAdapter<BluetoothDevice> pairedDeviceAdapter;
     private UUID myUUID;
-    private final String UUID_STRING_WELL_KNOWN_SPP =
-            "00001101-0000-1000-8000-00805F9B34FB";
+    private final String UUID_STRING_WELL_KNOWN_SPP = "00001101-0000-1000-8000-00805F9B34FB";
 
     ThreadConnectBTdevice myThreadConnectBTdevice;
     ThreadConnected myThreadConnected;
@@ -70,9 +69,7 @@ public class BluetoothActivity extends Activity {
             }});
 
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)){
-            Toast.makeText(this,
-                    "FEATURE_BLUETOOTH NOT support",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "FEATURE_BLUETOOTH NOT support", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -82,15 +79,12 @@ public class BluetoothActivity extends Activity {
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
-            Toast.makeText(this,
-                    "Bluetooth is not supported on this hardware platform",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Bluetooth is not supported on this hardware platform", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
 
-        String stInfo = bluetoothAdapter.getName() + "\n" +
-                bluetoothAdapter.getAddress();
+        String stInfo = bluetoothAdapter.getName() + "\n" + bluetoothAdapter.getAddress();
         textInfo.setText(stInfo);
     }
 
@@ -116,8 +110,7 @@ public class BluetoothActivity extends Activity {
                 pairedDeviceArrayList.add(device);
             }
 
-            pairedDeviceAdapter = new ArrayAdapter<BluetoothDevice>(this,
-                    android.R.layout.simple_list_item_1, pairedDeviceArrayList);
+            pairedDeviceAdapter = new ArrayAdapter<BluetoothDevice>(this, android.R.layout.simple_list_item_1, pairedDeviceArrayList);
             listViewPairedDevice.setAdapter(pairedDeviceAdapter);
 
             listViewPairedDevice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -125,8 +118,7 @@ public class BluetoothActivity extends Activity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
-                    BluetoothDevice device =
-                            (BluetoothDevice) parent.getItemAtPosition(position);
+                    BluetoothDevice device = (BluetoothDevice) parent.getItemAtPosition(position);
                     Toast.makeText(BluetoothActivity.this,
                             "Name: " + device.getName() + "\n"
                                     + "Address: " + device.getAddress() + "\n"
@@ -142,7 +134,10 @@ public class BluetoothActivity extends Activity {
             });
         }
     }
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -296,7 +291,7 @@ public class BluetoothActivity extends Activity {
             while (true) {
                 try {
                     bytes = connectedInputStream.read(buffer);
-                    String strReceived = new String(buffer, 0, bytes);
+                    final String strReceived = new String(buffer, 0, bytes);
                     final String msgReceived = String.valueOf(bytes) +
                             " bytes received:\n"
                             + strReceived;
@@ -305,7 +300,19 @@ public class BluetoothActivity extends Activity {
 
                         @Override
                         public void run() {
-                            textStatus.setText(msgReceived);
+                            switch(strReceived) {
+                                case "1":
+                                    textStatus.setText("왼발을 꼬고 있습니다.");
+                                    break;
+                                case "2":
+                                    textStatus.setText("오른발을 꼬고 있습니다.");
+                                        break;
+                                default:
+                                    textStatus.setText("바른자세로 앉아있습니다.");
+                                    break;
+                            }
+
+
                         }});
 
                 } catch (IOException e) {

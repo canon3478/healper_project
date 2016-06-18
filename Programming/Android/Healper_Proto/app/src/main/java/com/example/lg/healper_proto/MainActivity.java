@@ -20,6 +20,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_sub);
 
+        startActivity(new Intent(this, Splash.class));
+
         ID_edit = (EditText) findViewById(R.id.ID);
         PW_edit = (EditText) findViewById(R.id.PW);
 
@@ -42,13 +44,6 @@ public class MainActivity extends Activity {
         Sign_Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
-        Button bt_connect = (Button) findViewById(R.id.btconnect);
-        bt_connect.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BluetoothActivity.class);
                 startActivity(intent);
             }
         });

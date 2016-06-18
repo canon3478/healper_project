@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/btconnect"
+        android:text="Bluetooth Connect"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="50dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="1">
+        <TextView
+            android:text="ID"
+            android:layout_width="1dp"
+            android:layout_weight="0.2"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/ID"
+            android:layout_width="1dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="1">
+        <TextView
+            android:text="PassWord"
+            android:layout_width="1dp"
+            android:layout_weight="0.2"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/PW"
+            android:layout_width="1dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:weightSum="1">
+            <Button
+                android:id="@+id/Login"
+                android:text="Log In"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"/>
+        <Button
+            android:id="@+id/signup"
+            android:text="Sign Up"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="1">
+        <Button
+            android:text="Find ID"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"/>
+        <Button
+            android:text="Find PassWord"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>

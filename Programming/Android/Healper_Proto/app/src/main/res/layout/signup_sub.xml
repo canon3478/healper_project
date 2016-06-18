@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="#FFFFFF">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -11,12 +12,14 @@
         android:gravity="center"
         android:weightSum="1">
         <TextView
+            android:textColor="#000000"
             android:text="ID"
             android:layout_width="1dp"
             android:layout_weight="0.2"
             android:layout_height="match_parent"
             android:gravity="center"/>
         <EditText
+            android:textColor="#000000"
             android:id="@+id/ID"
             android:layout_width="1dp"
             android:layout_weight="0.5"
@@ -31,6 +34,7 @@
         android:layout_marginBottom="10dp"
         android:weightSum="1">
         <Button
+            android:textColor="#000000"
             android:id="@+id/Re_Check"
             android:text="중복 확인"
             android:layout_weight="0.72"
@@ -44,12 +48,14 @@
         android:gravity="center"
         android:weightSum="1">
         <TextView
+            android:textColor="#000000"
             android:text="PassWord"
             android:layout_width="1dp"
             android:layout_weight="0.2"
             android:layout_height="match_parent"
             android:gravity="center"/>
         <EditText
+            android:textColor="#000000"
             android:id="@+id/PW"
             android:layout_width="1dp"
             android:layout_weight="0.5"
@@ -63,12 +69,14 @@
         android:gravity="center"
         android:weightSum="1">
         <TextView
+            android:textColor="#000000"
             android:text="Name"
             android:layout_width="1dp"
             android:layout_weight="0.2"
             android:layout_height="match_parent"
             android:gravity="center"/>
         <EditText
+            android:textColor="#000000"
             android:id="@+id/Name"
             android:layout_width="1dp"
             android:layout_weight="0.5"
@@ -82,12 +90,14 @@
         android:gravity="center"
         android:weightSum="1">
         <TextView
+            android:textColor="#000000"
             android:text="E-mail"
             android:layout_width="1dp"
             android:layout_weight="0.2"
             android:layout_height="match_parent"
             android:gravity="center"/>
         <EditText
+            android:textColor="#000000"
             android:id="@+id/Email"
             android:layout_width="1dp"
             android:layout_weight="0.5"

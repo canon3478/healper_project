@@ -4,30 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FFFFFF"
     android:weightSum="1920">
-
-    <RelativeLayout
-        android:id="@+id/main_layout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TabWidget
-            android:id="@android:id/tabs"
-            android:layout_alignParentBottom="true"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ListView
+            android:id="@+id/pairedlist"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            />
-        <FrameLayout
-            android:id="@android:id/tabcontent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@android:id/tabs"/>
+            android:layout_height="wrap_content">
+        </ListView>
 
-        <FrameLayout
-            android:id="@+id/realcontent"
+        <RelativeLayout
+            android:id="@+id/main_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@android:id/tabs"/>
-    </RelativeLayout>
+            android:layout_height="match_parent">
 
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                />
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@android:id/tabs"/>
+
+            <FrameLayout
+                android:id="@+id/realcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@android:id/tabs"/>
+        </RelativeLayout>
+    </LinearLayout>
 </android.support.v4.app.FragmentTabHost>
