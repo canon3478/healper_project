@@ -404,7 +404,7 @@ Email: o\_\_\_xo@naver.com \\\\\\\\\\\\}}
 
 This project is about self-orthotherapy system using Arduino with a built-in bluetooth 4.0 communication chip and pressure sensor which communicates with an Android application. This program can definitely detect users' incorrect postures and can be used for long-term postural analysis and correction as saving users' postural data in database.\\
 
-\emph{Keywords}---Self-orthotherapy, Arduino, Pressure sensor, Android application \\\\\\\\\\
+\emph{Keywords}---Self-orthotherapy, Arduino, Pressure sensor, Android application \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 \end{abstract}
 \renewcommand{\arrayrulewidth}{1pt}
@@ -451,6 +451,7 @@ Manager& Kim & program and managing the budget \\
 \large
 
 
+
 \section{Introduction}
 
 % no \IEEEPARstart
@@ -462,6 +463,64 @@ The application can recognize the position by using Arduino and pressure sensor.
 \\\\\\
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
+
+
+\clearpage
+
+\section{INDEX}
+
+I. INTRODUCTION\\\\
+
+II. INDEX\\\\
+
+III. REQUIREMENTS\\\\
+A. Required Hardware And Software\\\\
+B. Requirements For Developers\\\\
+C. Requirements For Users\\\\
+D. Requirements For Application\\\\
+
+
+IV. DEVELOPMENT ENVIRONMENT\\\\
+A. Choice Of software Development Platform\\
+
+-1. Which platform and why?\\
+
+-2. Which programming language and why?\\
+
+-3. Cost estimation\\
+
+-4. Clear information of the development\\
+
+-5. Commercial cloud platform\\\\
+B. Software In Use\\\\
+C. Task Distribution\\\\
+
+
+V.	SPECIFICATIONS\\\\
+A. Modeling For Specifications\\\\
+B. Posture Recognition Using Pressure Sensor\\\\
+C. Posture Classification\\\\
+D. Specification For Bluetooth Communication\\\\
+E. Specification For Front-End Application Pages\\\\
+
+
+VI. ARCHITECTURE DESIGN AND IMPLEMENTATION\\\\
+A. Overall Architecture\\\\
+B. Directory Organization\\\\
+C. Code Analysis\\\\
+
+
+VII. USE CASES\\\\
+
+
+VIII. SOFTWARE INSTALLATION GUIDE\\\\
+
+
+IX. DISCUSSION\\\\
+
+X. ISSUES
+
+\clearpage
 
 \section{Requirements}
 
@@ -660,6 +719,10 @@ Users can grasp how well they have sat for today as this application provides to
 
 Users can measure their current body balance status by taking a photo of their upper body. If, users take picture by using this function, the program would offer the information about how much their body is twisted. 
 
+-- Searching An Orthopedic Office Near Users
+
+Users can have information about where an orthopedic office is near themselves. They can have their spine or neck treated if they want.
+
 \section{Development Environment}
 
 \subsection{Choice of software development platform}
@@ -753,7 +816,7 @@ Therefore, we need 4 pressure sensors, Arduino, bluetooth module, bread board, U
 
 Products & Prices & Quantities & Costs \\ \hline \hline
 
-Pressure Sensor (FSR-406) & 14,000 & 4 & 56,000  \\ \hline 
+Pressure Sensor (FSR-406) & 15,000 & 4 & 60,000  \\ \hline 
 
 Arduino Uno (R3) & 7,500 & 1 & 7,500 \\ \hline
 
@@ -765,7 +828,9 @@ USB Cable & 500 & 1 & 500  \\ \hline
 
 Jump Wire MM& 70 & 50 & 3500  \\ \hline
 
-\multicolumn{3}{|c|}{Total} & \multicolumn{1}{|l|}{78,000} \\ \hline 
+Cushion & 5000 & 1 & 5000 \\ \hline
+
+\multicolumn{3}{|c|}{Total} & \multicolumn{1}{|l|}{87,000} \\ \hline 
 
 \end{tabular}
 \end{table}
@@ -1178,13 +1243,32 @@ The third function resets the pressure value that matches the users' body. Accor
 \subsection{Directory organization}
 
 \begin{verbatim}
-Dir 1: 
-Healper_Proto/app/src/main/java/
-com/example/lg/healper_proto
 
-Dir 2:
-Healper_Proto/app/src/main/res/
-layout
+Dir1 : 
+healper_project/Programming/Android/
+Healper_Proto/app/src/main/java/com/
+example/lg/healper_proto
+
+Dir2 : 
+healper_project/Programming/Android/
+Healper_Proto/app/src/main/res/layout
+
+Dir3 : 
+healper_project/Programming/Arduino/
+ValuesToApp
+
+Dir4 : 
+healper_project/Programming/Server/
+Localhost/WebContent/gateway
+
+Dir5 : 
+healper_project/Programming/Server/
+Localhost/WebContent/gateway/svc
+
+Dir6 : 
+healper_project/Programming/Server/
+Localhost/WebContent/gateway/util
+
 \end{verbatim}
 
 \begin{table}[H]
@@ -1207,21 +1291,40 @@ Dir1& TapActivity.java & StatActivity class & \\ \hline
 
 Dir1 & TipActivity.java & TipActivity class & \\ \hline 
 
-In Arduino & ValuesToApp.ino & setup, loop method & \\ \hline  
+Dir1 & Splash.java & Splash.class & \\ \hline
 
-Dir2& main\_{}sub.xml & & \\ \hline 
+Dir1 & toJSON.java & toJSON.class & \\ \hline
 
-Dir2& now\_{}sub.xml & &  \\ \hline
+Dir1 & toServer.java & toServer.class & \\ \hline
 
-Dir2& setting\_{}sub.xml & & \\ \hline 
+Dir2& Main\_{}sub.xml & & \\ \hline 
 
-Dir2 & signup\_{}sub.xml & & \\ \hline 
+Dir2& Now\_{}sub.xml & &  \\ \hline
+
+Dir2 & Popup.xml & & \\ \hline
+
+Dir2& Setting\_{}sub.xml & & \\ \hline 
+
+Dir2 & Splash.xml & & \\ \hline
 
 Dir2 & stat\_{}sub.xml & & \\ \hline 
 
 Dir2 & tap\_{}sub.xml & & \\ \hline
 
 Dir2 & tip\_{}sub.xml & & \\ \hline
+
+Dir3 & ValuesToApp.ino & setup(), loop() & In Arduino \\ \hline  
+
+Dir4 & Index.jsp & & \\ \hline
+
+Dir5 & MT0001.jsp & & \\ \hline
+
+Dir5 & MT0002.jsp & & \\ \hline
+
+Dir5 & MT0003.jsp & & \\ \hline
+
+Dir6 & JsonToMap.jsp & & \\ \hline
+
 \end{tabular}\\\\\\\\
 
 \end{table}
@@ -1250,7 +1353,7 @@ Setup method is used firstly when the Arduino is executed. In this program, the 
 
 b. Loop method 
 
-Loop method is used constantly while the Arduino is executed. In this program, the functions receiving and sending the pressure value are established in loop method. \\\\
+Loop method is used constantly while the Arduino is executed. In this program, the functions receiving and sending the pressure value are established in loop method. The pressure values from pressure sensors go through the algorithm and are sent to the application every second.\\\\
 
 2. MainActivity\\
 
@@ -1272,19 +1375,15 @@ MainActivity.java
 
  -- Class components:
 
-a. BLTConnection method
-
-Relationship between the pressure sensors and smartphone is necessary because this program receives users’ posture data from the pressure sensor. In onClick method, BLTConnection method performs on/off functions and searching/connecting devices functions of bluetooth. Therefore, BLTConnection method is necessary in the first page, that is to say Log-In Page. 
-
-b. OnClickListener
+a. OnClickListener
 
 There are four OnClickListner in MainActivity.
 
-  1) Log\_()In
+  1) Log\_{}In
   
 When users enter their ID and password and click Log-in Button, if the account is signed up for server, loading data that are associated with the account from server synchronize with moving to TapActivity. Unless the account is signed up for server, Sign-Up Page appears.
 
-  2) Sign\_()Up
+  2) Sign\_{}Up
   
 Users who start to use this program use Sign-up button to sign up. When this button is clicked, Sign-Up Page appears.
 
@@ -1316,11 +1415,11 @@ a. OnClickListener
 
 There are three OnClickListner in SignUpActivity.
 
-  1) Redundancy\_()Check
+  1) Redundancy\_{}Check
 
   Individual account information reported in this page is going to be saved in server. Each user's ID is going to be the primary key in server database. Therefore, the duplication check is necessary to check if an entered ID that tries to sign-up is same as other existing users' ID. There are duplication check button for this. 
 
-  2) Sign\_()Up
+  2) Sign\_{}Up
 
   Account information entered by users is saved in server and moves back to Log-In Page again.
 
@@ -1338,7 +1437,12 @@ To show tap page and constitute tap view which consist of Now, Stat, Tip, and Se
  
  --	Functionality:
 
-TapActivity is the body of this program. We build this program to make users be able to transfer freely using 'tab' from a tap to another tap among four taps; now status, statistics, tips and setting page. TapActivity is used in this part to make Fragment Activity showing each page as fragment.\\
+TapActivity is the body of this program. We build this program to make users be able to transfer freely using 'tab' from a tap to another tap among four taps; now status, statistics, tips and setting page. TapActivity is used in this part to make Fragment Activity showing each page as fragment.
+
+In each fragment, some methods use users' postures that are sent through bluetooth. So it is convenient to use those values when the fragments receive from TapActivity(basis of those fragments).
+
+And then, bluetooth connection and TapActivity coincide, that receive values every second. Also it declares and initialize values that are shared in four fragments.
+\\
 
  --	Location of source code:
  
@@ -1356,7 +1460,43 @@ Init method in onCreate method, when this page is created, initialize all of tap
 
 b. TapHost
 
-when four taps at the bottom of the page are clicked, Fragment is changed to an activity corresponding the tap. Switching page is convenient by using taps. \\\\
+when four taps at the bottom of the page are clicked, Fragment is changed to an activity corresponding the tap. Switching page is convenient by using taps. 
+
+c. onStart() method
+
+When TapActivity is called and started, this method turns on the bluetooth if bluetooth is turned off.
+
+d. setup() method
+
+This method connect with 'Healper' automatically if bluetooth is turned on or it is run in onStart() method. setup() method runs ThreadConnect BTdevice Thread which finds and connects with 'Healper'  
+
+e. ThreadConnectBTdevice Thread
+
+This method creates bluetooth socket and connects the socket to 'Healper'. If the connection is succeeded, it runs startThreadConnected method. 
+
+f. startThreadConnected(BluetoothSocket socket) method
+
+This method runs ThreadConnected Thread through the bluetooth socket that this method receives.
+
+g. ThreadConnected Thread
+
+This thread receives the pressure values through the socket every socket, and determines each activity's actions depending on the values.
+
+h. stat\_{}init() method
+
+To insert a graph in StatActivity, we have to save the personal database in resource array. This method initializes the array before save.
+
+i. Right\_{}shoulder, Left\_{}shoulder, Front\_{}hunched, Left\_{}Leg, Right\_{}Leg, Default\_{}Leg, Stand\_{}up method
+
+Depending on the values from Arduino, these methods change ImageView in NowActivity and control Chronometer(timer). These contains callPopup() method which shows pop-up message when a user maintains an wrong posture above schedule time.
+
+j. callPopup() method
+
+This method shows pop-up message on the current activity and differentiates a displayed text from others depending on parameter. Also, it saves the base of nowActivity's timer while a pop-up message is showed.
+
+k. onDestroy() method
+
+When TapActivity is turned off, this method stops ThreaConnectBTdevice Thread and disconnects with the socket.\\\\
 
 5.	NowActivity\\
 
@@ -1378,21 +1518,9 @@ NowActivity.java
 
  --	Class components:
 
-a. callValues method 
+a. onCreate() method 
 
-callValues method in onCreateView saves the pressure values that are sent from Arduino through bluetooth in variables to input those values in algorithm\_()Values. 
-
-b. algorithm\_()Values method 
-
-Using the pressure values saved in variables by callValues method, it outputs the anatomy-computed current posture by input the variables in designed algorithm for analogizing the current posture. 
-
-c. call\_()3Dposition method 
-
-call\_()3Dposition method invokes 3D\_()Position Graphic file corresponding current posture that is computed by algorithm\_()Values and displays it in Now Page. 
-
-d. print\_()time method 
-
-print\_()time method displays users' total sitting time and the time users have adopted their current postures in Now Page. \\\\
+This method initializes Chronometer, InageView, and Fragment View.\\\\
 
 
 6.	StatActivity\\
@@ -1415,13 +1543,13 @@ StatActivity.java
  
  --	Class components:
  
-a. call\_()data method 
+a. OnClickListener() method
 
-call\_()data method in onCreateView loads a recent year's data of users from server. That loaded data is saved in time\_()array.  
+This method changes view of the graph depending on 'year', 'month', 'week' buttons. It deletes the graph which is already shown and displays new graph from new array.
 
-b. print\_()graphs method 
+b. getBarChartDataset\_{}year(), getBarChartDataset\_{}month(), getBarChartDataset\_{}week() method
 
-Using data that is saved in variables through call\_()datas method data, makes graphs and displays them in Stat Page.\\\\
+This method is to create 'year', 'month' and 'week' graph. It forms view by displaying cumulative time on X-axis and Y-axis.\\\\
 
 7.	TipActivity\\
 
@@ -1441,7 +1569,7 @@ com/example/lg/healper_proto/
 TipActivity.java
 \end{verbatim}
 
- -- Class components\\\\
+ -- Class components: None\\\\
  
 8.	SettingActivity\\
 
@@ -1473,7 +1601,202 @@ There is a list box in Setting Page. In this list box, there are ten options; fr
  
 c. initiate pressure value method
 
-Setting up a common pressure value is impossible since every users have different pressure values. Therefore, we made it possible that every users configure their own pressures value. When initialization button in Setting Page is clicked, the average pressure value that has input for five seconds is saved in application and also in server. This program judges whether users' current postures are wrong or not comparing with the saved values. \\\\\\
+Setting up a common pressure value is impossible since every users have different pressure values. Therefore, we made it possible that every users configure their own pressures value. When initialization button in Setting Page is clicked, the average pressure value that has input for five seconds is saved in application and also in server. This program judges whether users' current postures are wrong or not comparing with the saved values. \\\\
+
+9. toServer
+
+ -- Purpose: 
+ 
+ We have to do parsing in forms of JSON when we carry out a method which is needed to send a request to servers such as Log\_{}In, Sign\_{}Up, Redudancy\_{}Check. toServer is the class for processing those methods all together assortatively.\\
+ 
+ -- Functionality: 
+ 
+ toServer has functions that classify the requests to service code, divide them to request and data, and do parsing to JSON format. Since several activities access to toServer class through other methods, the function that determines which activity is from which method is needed. \\ 
+ 
+ -- Location of source code: 
+
+\begin{verbatim}
+healper_project/Programming/
+Android/Healper_Proto/app/src/
+main/java/com/example/lg/
+healper_proto/toServer.JAVA
+\end{verbatim}
+
+-- Class components:
+
+a. LogIn() method
+	
+This method is in static form to be called from other activities. It is used when Log\_{}In request needs to be parsed in JSON form.
+
+	
+b. SignUp() method
+	
+This method is in static form to be called from other activities. It is used when Sign\_{}In request needs to be parsed in JSON form.
+
+	
+c. RedudancyCheck() method
+	
+This method is in static form to be called from other activities. It is used when Redudancy\_{}Check request needs to be parsed in JSON form.
+	
+d. toJson() method
+	
+This method creates JSON object which takes string from above three methods as value. toJason is overloaded in the number of parameter. Each toJson method creates JSON object in a proper form and send it as parameter of toURL method.
+	
+e. toURL() method
+	
+This method sends the JSON form from toJson method to server. It tries to request by accessing to URL which is added the JSON form at the rear of server's domain. When Accessing is succeeded, it reads data from URL in BufferedReader and sends response data to toJSON class.\\\\
+
+10. toJSON
+
+ -- Purpose: 
+
+toJSON sends JSON through toURL method of toServer class. It reads JSON replied and makes application work normally. And it also analyzes service code of JSON replied.\\
+
+ -- Functionality: 
+
+After receiving response data, toJSON sends proper parameters to proper activities depending on service codes.\\
+
+ -- Location of source code: 
+
+\begin{verbatim}
+healper_project/Programming/
+Android/Healper_Proto/app/src/
+main/java/com/example/lg/
+healper_proto/toJSON.JAVA
+\end{verbatim}
+
+ -- Class components:
+
+a. execute() method
+	
+This method changes JSON statements(in string form from server) to JSON form of JSON object and then, runs exe\_{}svccd method to analyze service codes.
+	
+b. exe\_{}svccd() method
+	
+This method classifies analyzed service codes of JSON objects to perform the proper method.
+	
+c. login() method
+	
+If log\_{}in is succeeded, this method saves cumulative time data of the account to array of TapActivity. At this moment, array of TapActicity has to be declared in static.
+	
+d. signup() method
+	
+If an account which tried to sign-up is added in database server normally, this method lets users know that. And if an account which tried to sign-up is not added in database server, it lets users be able to try again.
+	
+e. re\_{}check() method
+
+This method searches an account which tried to sign-up. If the account is already signed up by another user, it informs the user who is trying to sign-up that the account is unavailable. And if the account is available, lets users know that.\\\\
+
+11. Splash
+
+- Purpose : 
+
+Splash displays a page that lets know users that it is loading, while the initializing of MainActivity is processing.\\
+
+
+- Functionality : None\\
+
+- Location of Source code:
+
+\begin{verbatim}
+healper_project/Programming/
+Android/Healper_Proto/app/src/
+main/java/com/example/lg/
+healper_proto/Splash.JAVA
+\end{verbatim}
+
+- Class components : None\\\\
+
+12. index.jsp
+
+ -- purpose : 
+
+indes.jsp is a gateway that classifies JSON statements to each values URL and for running a necessary method.\\
+
+ -- Functionality : 
+
+It has a function to save a log history of users. It runs a proper method after classifies JSON parameter depending on service codes. And then, it parses response data in JSON form again and output the result to send it to application.  \\
+
+ -- Location of Source code:
+
+\begin{verbatim}
+healper_project/Programming/
+Server/Localhost/WebContent/
+gateway/index.jsp
+\end{verbatim}
+
+13. MT0001.jsp
+
+ -- purpose : 
+ It aims to send the fact whether log-in is succeded or not to the application when getting json requiring log-in function from application.
+- This the class is conducted in server when getting json requiring log-in function from functionality application. And search the proper password in user table in database through id getting by json form. If password getting by json and searched password are same thing, all of data about the ID are created sentence by json form after reentering to the data table of database. If password getting by json and searched password are different, the sentence sending the fact that log-in is failed to the application is passed by index.jsp file.\\
+
+ -- Location of Source Code:
+
+\begin{verbatim}
+healper_project/Programming/
+Server/Localhost/WebContent/
+gateway/svc/MT0001.jsp
+\end{verbatim}
+
+14. MT0002.jsp
+
+ -- purpose : 
+This aims to send the fact whether sign-up succeeds or not to the application when getting json form requiring sign-up function from application.\\
+
+ -- Functionality : 
+It sends DMS requiring new sign-up having ID, PW, E-mail, Name values. And because ID is primary key, if ID is repeated it makes error sentence sending to the application. But if user succeeds in sign-up, the success sentence will be sending in index.jsp file. \\
+
+- Location of Source Code:
+
+\begin{verbatim}
+healper_project/Programming/
+Server/Localhost/WebContent/
+gateway/svc/MT0002.jsp
+\end{verbatim}
+
+15. MT0003.jsp
+
+ -- purpose : 
+  It aims to send the fact whether the repeatation check succeeds or not to the application when getting json form requiring redudancy\_{}Check function.  \\
+
+ -- Functionality : 
+  It sends the select sentence getting ID requiring repeatation check. After searching ID in database, it makes json form for sending the result. Index.jsp is sended to notify the fact that whether the ID is available or not. \\
+ 
+ -- Location of Source Code:
+
+\begin{verbatim}
+healper_project/Programming/
+Server/Localhost/WebContent/
+gateway/svc/MT0003.jsp
+\end{verbatim}
+
+16. JsonToMap.jsp
+
+ -- purpose: 
+ This is class customizing json form exchanged between application and server. This JsonToMap could create json form customized with hashmap base.\\
+ 
+-- Functionality : 
+
+There are tow JSON form that server and application send and receive. The JSON that is sent from application to server is constructed like 
+\begin{verbatim}
+{ “svccd” : “MT0001”, “req_data” : [{“Id” : “id”… }] }
+\end{verbatim}
+and JSON that is sent from server to applicationis constructed like 
+\begin{verbatim}
+{ “svccd” : “MT0001”, “res_data” : [{“isOK?” : “True”… }] }
+\end{verbatim}
+req\_{}data or res\_{}data received only service codes commonly and are saved as Json Array. Since they are in same form, we build a special jsp file to do parsing easily.\\
+
+ -- Location of Source Code:
+
+\begin{verbatim}
+healper_project/Programming/
+Server/Localhost/WebContent/
+gateway/util/JsonToMap.jsp
+\end{verbatim}
+
+
 
 
 \section{Use Cases}
@@ -1590,12 +1913,75 @@ Tips & \multicolumn{2}{p{6cm}|}{\raggedright User could see the some videos abou
 Use Case & \multicolumn{2}{c|}{Description} \\ \hline\hline
 On/Off Push & \multicolumn{2}{p{5cm}|}{\raggedright User could change the status of push alarm by On/Off. When user has urgent project meetint or needs to keep mobile phone silent, this function would be needed.} \\ \hline
 Setting Push time & \multicolumn{2}{p{5cm}|}{\raggedright User could set the time when user get the push alarm. The time has range from 1 to 10 minutes. For example, if user selects 2 minutes in this page(Default value is 1 minute)user would get push alarm when user keeps bad posture for 2 minutes.  } \\ \hline
-Initializing pressure value & \multicolumn{2}{p{5cm}|}{\raggedright User could intialize pressure value in this page. The reason why user uses this function is that the actual user could be changed. So, when the actual user is changed the program initializes the pressure value making average value getting five times pressure values. } \\ \hline
+Initializing pressure value & \multicolumn{2}{p{5cm}|}{\raggedright User could initialize pressure value in this page. The reason why user uses this function is that the actual user could be changed. So, when the actual user is changed the program initializes the pressure value making average value getting five times pressure values. } \\ \hline
 Log-Out & \multicolumn{2}{p{5cm}|}{\raggedright User could do Log-Out in this page. This function is required when user do not want to use this program or take out his/her own data to the database. } \\\\\\ \hline
 \end{tabular}}
 \end{table}
 
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.4]{login}
+    \caption{Log-In Activity} 
+\end{center}
+\end{figure}
 
+This is log-in page. If user wants to use our program, user should log-in first. Because our one of the project objects is that we make user use our service in any device with only ID and password. And we use database postgreSQL to save personal data and analyze the data concerning user's posture.
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.4]{signup}
+    \caption{Sign-Up Activity} 
+\end{center}
+\end{figure}
+
+So, user should sign-up to use our program and user should write ID, Password, Name and E-mail necessarily. And user should repetition check of ID to avoid overlapping with other user's ID.
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.4]{bluetooth}
+    \caption{Bluetooth Connection} 
+\end{center}
+\end{figure}
+
+Our program is based on bluetooth communication. Because we aim to make user use our service only with smart cushion without any mess hardware things and mobile phone, bluetooth communication is needed. So, to connect mobile phone with smart cushion, user should click the top of now activity which makes bluetooth connection.
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.4]{now}
+    \caption{Now Activity} 
+\end{center}
+\end{figure}
+
+This is the main part of our program. User could see the current posture status. There are two parts. First, Users could see the time about how much they keep taking right and wrong posture and the second users could see the image of posture users taking now. And we divided the posture type into seven and recognize the each posture by our own algorithm using pressure values. And  if specific time is flowed, the warning messge will be poped up.
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.4]{statistic}
+    \caption{Statistic Activity} 
+\end{center}
+\end{figure}
+
+ And we also provide the posture statistic data based on specific period (week, month, year) to help user correct their wrong posture habit. So, User could see the personal statistic about how much time user did wrong postures in this page.
+ 
+ \begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.4]{tip}
+    \caption{Tip Activity} 
+\end{center}
+\end{figure}
+
+This is tip page. In the tip page, user could get additional information for good posture by videos or hospital information such as good for low-back pain or spine.
+
+ \begin{figure}[H]
+\begin{center}
+    \includegraphics[scale=0.4]{setting}
+    \caption{Setting Activity} 
+\end{center}
+\end{figure}
+
+ And in the setting activity, user could set functions suited to the personal style such as push setting (on/off), time setting and value initializing.Value initializing function is important part. Because every chair's shape and depth are different, so to apply our algorithm to recognize different posture types in every environment, initializing pressure value is necessary thing. \\\\\\
+ 
+ 
 \section{Software Installation Guide}
 
 How to install?
@@ -1664,7 +2050,7 @@ And because pressure sensor is too expensive (one unit is about 14,000 won), so 
 Lastly, it was also the first time to write a documentation using LaTex. Since it is unfamiliar to us, we had a very hard time to learn how to use LaTex. Especially, it was the hardest for us to make a table, move the table and set the margin of the table. However, we realized that Latex is very convenient program to write a documentation more cleanly than any other program.
  
 
-\section* {issues}
+\section{issues}
 
 
 1) Our program is based on bluetooth and getting pressure values every second. So, Our program runs out of battery too much now. So. We have to think about how to reduce battery consume next version.
