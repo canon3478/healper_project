@@ -467,7 +467,7 @@ The application can recognize the position by using Arduino and pressure sensor.
 
 \clearpage
 
-\section{INDEX}
+\section{INDEX\\}
 
 I. INTRODUCTION\\\\
 
@@ -721,7 +721,7 @@ Users can measure their current body balance status by taking a photo of their u
 
 -- Searching An Orthopedic Office Near Users
 
-Users can have information about where an orthopedic office is near themselves. They can have their spine or neck treated if they want.
+Users can have information about where an orthopedic office is near themselves. They can have their spine or neck treated if they want.\\\\\\
 
 \section{Development Environment}
 
@@ -731,7 +731,7 @@ Users can have information about where an orthopedic office is near themselves. 
 
 -- Windows for android application developing
 
-Our target is office workers who want to correct their sitting posture. For ortho-therapy, it is the most important and efficient to maintain correct posture intentionally. Considering this, developing mobile application is appropriate rather than either web or computer program operated in window OS because time with mobile phone is longer than time using computer. If there is only our posture-correcting cushion, users can notice that they sit in incorrect posture by push alarm at anytime and anywhere, even while watching TV and reading a book at home. And this data is saved in server automatically so they can check the statistics how long they were sitting and how many times they sat incorrectly. Because Android OS is being used much more than IOS, as the below Figure 1 is showing, we develop our application in Android application.
+Our target is office workers who want to correct their sitting posture. For ortho-therapy, it is the most important and efficient to maintain correct posture intentionally. Considering this, developing mobile application is appropriate rather than either web or computer program operated in window OS because time with mobile phone is longer than time using computer. If there is only our posture-correcting cushion, users can notice that they sit in incorrect posture by push alarm at anytime and anywhere, even while watching TV and reading a book at home. And this data is saved in server automatically so they can check the statistics how long they were sitting and how many times they sat incorrectly. Because Android OS is being used much more than IOS, as the below Figure 1 is showing, we develop our application in Android application.\\\\\\
 
 \begin{figure}[htbp]
 \begin{center}
@@ -748,7 +748,7 @@ Java is a general-purpose computer programming language that is concurrent, clas
 
 -- C for IDE
 
-We should do many tests to recognize various users' postures using pressure values getting from FSR-406 pressure sensors. So, we use the open-source Arduino Software (IDE) and the best proper language to use this program is C. The open-source Arduino Software (IDE) makes it easy to write code and upload it to the board. It runs on Windows, Mac OS X, and Linux. The environment is written in Java and based on Processing and other open-source software. This software can be used with any Arduino board.\\
+We should do many tests to recognize various users' postures using pressure values getting from FSR-406 pressure sensors. So, we use the open-source Arduino Software (IDE) and the best proper language to use this program is C. The open-source Arduino Software (IDE) makes it easy to write code and upload it to the board. It runs on Windows, Mac OS X, and Linux. The environment is written in Java and based on Processing and other open-source software. This software can be used with any Arduino board.\\\\\\
 
 -- JSON
 
@@ -766,7 +766,7 @@ Although there are strong outward similarities between Javascript and Java, incl
 
 The Apache Tomcat software is an open source implementation of the Java Servlet, JavaServer Pages, Java Expression Language and Java WebSocket technologies. 
 The Apache Tomcat software is developed in an open and participatory environment. The Apache Tomcat project is intended to be a collaboration of the best-of-breed developers from around the world. 
-Apache Tomcat software powers numerous large-scale, mission-critical web applications across a diverse range of industries and organizations.\\
+Apache Tomcat software powers numerous large-scale, mission-critical web applications across a diverse range of industries and organizations.\\\\
 
 
 -- PostgreSQL for database using pgAdmin
@@ -781,7 +781,7 @@ PgAdmin Portable is the PgAdmin whatever it is packaged with a launcher as a por
 
 -- Cost for Server :
 
-1 year for free. And after 1 year, there will be additional prices. We predict maybe about 1,000 people will use our service, and DAU (Daily Activity User) will be 300 around. So we will use t1. micro instance (AWS), and its prices are about 30 dollars per month: So may be there will be additional 360 dollars per year.\\
+1 year for free. And after 1 year, there will be additional prices. We predict maybe about 1,000 people will use our service, and DAU (Daily Activity User) will be 300 around. So we will use t1. micro instance (AWS), and its prices are about 30 dollars per month: So may be there will be additional 360 dollars per year.\\\\\\\\
 
 -- Cost for hardware
 
@@ -822,15 +822,15 @@ Arduino Uno (R3) & 7,500 & 1 & 7,500 \\ \hline
 
 Bluetooth Module (HC-06) & 6,000 & 1  & 6,000 \\ \hline
 
-Bread Board & 4,500 & 1 & 4,500 \\\hline
+Bread Board & 4,500 & 2 & 9,000 \\\hline
 
 USB Cable & 500 & 1 & 500  \\ \hline
 
 Jump Wire MM& 70 & 50 & 3500  \\ \hline
 
-Cushion & 5000 & 1 & 5000 \\ \hline
+Cushion & 10000 & 1 & 10000 \\ \hline
 
-\multicolumn{3}{|c|}{Total} & \multicolumn{1}{|l|}{87,000} \\ \hline 
+\multicolumn{3}{|c|}{Total} & \multicolumn{1}{|l|}{96,500} \\ \hline 
 
 \end{tabular}
 \end{table}
@@ -895,7 +895,7 @@ Healthcare
 
 - Early prediction of accidents from falling
 
-- Monitors rehabilitation (stroke, paralysis)\\
+- Monitors rehabilitation (stroke, paralysis)\\\\
 
 Sports
 
@@ -1227,7 +1227,7 @@ The third function resets the pressure value that matches the users' body. Accor
 
  -- Body Balance Page 
  In this page users could take picture of their upper body sitting on the chair. And the program analyses the users body balance by comparing left and right location of shoulder, chest and waist. Then the program shows how much the users body is twisted using degree. For example if the user's left shoulder is tilted to the left about 30 degrees, the user could see the status of the body balance by green and red line(Green line is criteria line meaning good body balance and the Red line shows how much the body is tilted.)and the message like ''Your left shoulder is tilted to the left about 30 degrees'' is shown. 
-\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 \section{architecture design and implementation\\}
 
@@ -1368,9 +1368,10 @@ This program uses ID and password functions to save each user's individual data.
  -- Location of source code:
  
 \begin{verbatim}
-Healper_Proto/app/src/main/java/
-com/example/lg/healper_proto/
-MainActivity.java
+healper_project/Programming/
+Android/Healper_Proto/app/src/
+main/java/com/example/lg/
+healper_proto/MainActivity.java
 \end{verbatim}
 
  -- Class components:
@@ -1385,7 +1386,7 @@ When users enter their ID and password and click Log-in Button, if the account i
 
   2) Sign\_{}Up
   
-Users who start to use this program use Sign-up button to sign up. When this button is clicked, Sign-Up Page appears.
+Users who start to use this program use Sign-up button to sign up. When this button is clicked, Sign-Up Page appears.\\\\
 
   3) Find ID/ Find Password
   
@@ -1404,9 +1405,10 @@ This activity saves new users' accounts information. In this activity, therefore
  --	Location of source code:
 
 \begin{verbatim} 
-Healper_Proto/app/src/main/java/
-com/example/lg/healper_proto/
-SignUpActivity.java
+healper_project/Programming/
+Android/Healper_Proto/app/src/
+main/java/com/example/lg/
+healper_proto/SignUpActivity.java
  \end{verbatim}
  
  --	Class components:
@@ -1425,7 +1427,7 @@ There are three OnClickListner in SignUpActivity.
 
   3) Cancel
 
-  Cancel Sign-Up process moves back to Log-In Page again.\\\\
+  Cancel Sign-Up process moves back to Log-In Page again.\\\\\\
 
 
 
@@ -1447,9 +1449,11 @@ And then, bluetooth connection and TapActivity coincide, that receive values eve
  --	Location of source code:
  
 \begin{verbatim}
-Healper_Proto/app/src/main/java/
-com/example/lg/healper_proto/
-TapActivity.java
+healper_project/Programming/
+Android/Healper_Proto/app/
+src/main/java/com/example/lg/
+healper_proto/TapActivity.java
+
  \end{verbatim}
  
  --	Class components:
@@ -1464,7 +1468,7 @@ when four taps at the bottom of the page are clicked, Fragment is changed to an 
 
 c. onStart() method
 
-When TapActivity is called and started, this method turns on the bluetooth if bluetooth is turned off.
+When TapActivity is called and started, this method turns on the bluetooth if bluetooth is turned off.\\\\\\\\
 
 d. setup() method
 
@@ -1496,7 +1500,7 @@ This method shows pop-up message on the current activity and differentiates a di
 
 k. onDestroy() method
 
-When TapActivity is turned off, this method stops ThreaConnectBTdevice Thread and disconnects with the socket.\\\\
+When TapActivity is turned off, this method stops ThreaConnectBTdevice Thread and disconnects with the socket.\\\\\\\\\\
 
 5.	NowActivity\\
 
@@ -1511,9 +1515,11 @@ NowActivity analyzes the pressure value that comes from Auduino through bluetoot
  --	Location of source code:
  
 \begin{verbatim}
-Healper_Proto/app/src/main/java/
-com/example/lg/healper_proto/
-NowActivity.java
+healper_project/Programming/
+Android/Healper_Proto/app/src/
+main/java/com/example/lg/
+healper_proto/NowActivity.java
+
 \end{verbatim}
 
  --	Class components:
@@ -1536,9 +1542,11 @@ StatActivity loads users' data from server, makes statistical charts and by thre
  --	Location of source code:
  
 \begin{verbatim}
-Healper_Proto/app/src/main/java/
-com/example/lg/healper_proto/
-StatActivity.java
+healper_project/Programming/
+Android/Healper_Proto/app/src/
+main/java/com/example/lg/
+healper_proto/StatActivity.java
+
  \end{verbatim}
  
  --	Class components:
@@ -1564,9 +1572,11 @@ StatActivity analyzes today's posture statistics and recommend the orthotherapy 
  --	Location of source code:
  
 \begin{verbatim} 
-Healper_Proto/app/src/main/java/
-com/example/lg/healper_proto/
-TipActivity.java
+healper_project/Programming/
+Android/Healper_Proto/app/src/
+main/java/com/example/lg/
+healper_proto/TipActivity.java
+
 \end{verbatim}
 
  -- Class components: None\\\\
@@ -1575,7 +1585,7 @@ TipActivity.java
 
  --	Purpose:
 
-To configure software setting and hardware setting to suit users' individual conditions. \\
+To configure software setting and hardware setting to suit users' individual conditions. \\\\\\\\\\
 
  --	Functionality:
 
@@ -1584,9 +1594,11 @@ This program basically lets users know that they are maintaining bad posture by 
  -- Location of source code:
 
 \begin{verbatim}
-Healper_Proto/app/src/main/java/
-com/example/lg/healper_proto/
-SettingActivity.java
+healper_project/Programming/
+Android/Healper_Proto/app/src/
+main/java/com/example/lg/
+healper_proto/SettingActivity.java
+
 \end{verbatim}
 
  --Class components:
@@ -1601,7 +1613,11 @@ There is a list box in Setting Page. In this list box, there are ten options; fr
  
 c. initiate pressure value method
 
-Setting up a common pressure value is impossible since every users have different pressure values. Therefore, we made it possible that every users configure their own pressures value. When initialization button in Setting Page is clicked, the average pressure value that has input for five seconds is saved in application and also in server. This program judges whether users' current postures are wrong or not comparing with the saved values. \\\\
+Setting up a common pressure value is impossible since every users have different pressure values. Therefore, we made it possible that every users configure their own pressures value. When initialization button in Setting Page is clicked, the average pressure value that has input for five seconds is saved in application and also in server. This program judges whether users' current postures are wrong or not comparing with the saved values. 
+
+d. log\-{}out method
+
+If users want to logout, this method makes users logout going back to the main activity when users click the log-out button in setting activity.\\\\\\\\
 
 9. toServer
 
@@ -1979,7 +1995,7 @@ This is tip page. In the tip page, user could get additional information for goo
 \end{center}
 \end{figure}
 
- And in the setting activity, user could set functions suited to the personal style such as push setting (on/off), time setting and value initializing.Value initializing function is important part. Because every chair's shape and depth are different, so to apply our algorithm to recognize different posture types in every environment, initializing pressure value is necessary thing. \\\\\\
+ And in the setting activity, user could set functions suited to the personal style such as push setting (on/off), time setting and value initializing.Value initializing function is important part. Because every chair's shape and depth are different, so to apply our algorithm to recognize different posture types in every environment, initializing pressure value is necessary thing. \\\\\\\\\\\\\\\\\\\\
  
  
 \section{Software Installation Guide}
@@ -2047,7 +2063,7 @@ And our first object is that we want to make soft cushion when user sits, but th
 
 And because pressure sensor is too expensive (one unit is about 14,000 won), so we had to change our plan (Our first plan is to buy nine (3x3) or sixteen (4x4) pressure sensors).  
  
-Lastly, it was also the first time to write a documentation using LaTex. Since it is unfamiliar to us, we had a very hard time to learn how to use LaTex. Especially, it was the hardest for us to make a table, move the table and set the margin of the table. However, we realized that Latex is very convenient program to write a documentation more cleanly than any other program.
+Lastly, it was also the first time to write a documentation using LaTex. Since it is unfamiliar to us, we had a very hard time to learn how to use LaTex. Especially, it was the hardest for us to make a table, move the table and set the margin of the table. However, we realized that Latex is very convenient program to write a documentation more cleanly than any other program.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  
 
 \section{issues}
